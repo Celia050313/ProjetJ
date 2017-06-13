@@ -1,6 +1,5 @@
 package main;
 
-//test du commit v2
 
 import java.sql.SQLException;
 
@@ -8,7 +7,7 @@ import controller.ControllerFacade;
 import model.ModelFacade;
 import view.ViewFacade;
 
-/**Olivier test commit 
+/**
  * <h1>The Class Main.</h1>
  *
  * @author Jean-Aymeric DIET jadiet@cesi.fr
