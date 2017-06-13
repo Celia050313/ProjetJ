@@ -8,7 +8,7 @@ import controller.ControllerFacade;
 import model.ModelFacade;
 import view.ViewFacade;
 
-/**Olivier test commit 2
+/**Olivier test commit 
  * <h1>The Class Main.</h1>
  *
  * @author Jean-Aymeric DIET jadiet@cesi.fr
