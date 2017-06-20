@@ -1,7 +1,5 @@
 package controller;
 
-import model.Element;
-
 public class ElementController {
 	private int x;
 	private int y;

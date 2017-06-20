@@ -1,4 +1,4 @@
-package view__1;
+package view;
 
 /**
  * <h1>The Interface IView.</h1>

@@ -1,4 +1,4 @@
-package model__3;
+package model;
 
 /**
  * <h1>The Class Example.</h1>

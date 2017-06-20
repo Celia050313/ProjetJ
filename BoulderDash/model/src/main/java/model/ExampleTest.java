@@ -1,4 +1,4 @@
-package model__3;
+package model;
 
 public class ExampleTest {
 	private Example _example;

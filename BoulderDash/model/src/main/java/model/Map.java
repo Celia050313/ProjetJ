@@ -1,6 +1,6 @@
-package model__3;
+package model;
 
-import model__3.Element.Element;
+import model.Element.Element;
 
 public class Map {
 	private int _dimention;
@@ -33,9 +33,9 @@ public class Map {
 		this._diamondCollected = aDiamondCollected;
 	}
 
-	public tab table() {
+/*	public tab table() {
 		throw new UnsupportedOperationException();
-	}
+	}*/
 
 	public void Map() {
 		throw new UnsupportedOperationException();

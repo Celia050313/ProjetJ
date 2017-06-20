@@ -1,10 +1,12 @@
-package view__1;
+package view;
 
-import controller.BoulderDashController;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import controller.BoulderDashController;
+
 public class keyController implements KeyListener {
-	public BoulderDashController _unnamed_BoulderDashController_;
+	public BoulderDashController BoulderDashController_;
 
 	public void keyPressed(KeyEvent aKeyEvent) {
 		throw new UnsupportedOperationException();

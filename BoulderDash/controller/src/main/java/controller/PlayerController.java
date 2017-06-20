@@ -1,7 +1,5 @@
 package controller;
 
-import view.BoulderDashView;
-
 public class PlayerController {
 	private int player;
 	private int order;
