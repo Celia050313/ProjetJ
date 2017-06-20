@@ -1,12 +1,9 @@
-package model.element.Motionless;
+package model__3.Element.MotionlessElement;
 
 public class Wall extends MotionlessElement {
-
-	private char SPRITE = 'W';
+	private char__W_ _sPRITE;
 
 	public Wall() {
-		// TODO - implement Wall.Wall
 		throw new UnsupportedOperationException();
 	}
-
 }

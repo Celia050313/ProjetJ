@@ -1,12 +1,9 @@
-package model.element.Mobile;
+package model__3.Element.Mobile;
 
 public class Diamond extends Mobile {
-
-	private char SPRITE = 'M';
+	private char _sPRITE = 'D';
 
 	public Diamond() {
-		// TODO - implement Diamond.Diamond
 		throw new UnsupportedOperationException();
 	}
-
 }

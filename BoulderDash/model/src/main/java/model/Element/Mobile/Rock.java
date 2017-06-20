@@ -1,12 +1,9 @@
-package model.element.Mobile;
+package model__3.Element.Mobile;
 
 public class Rock extends Mobile {
-
-	private char SPRITE = 'R';
+	private char _sPRITE = 'R';
 
 	public Rock() {
-		// TODO - implement Rock.Rock
 		throw new UnsupportedOperationException();
 	}
-
 }
