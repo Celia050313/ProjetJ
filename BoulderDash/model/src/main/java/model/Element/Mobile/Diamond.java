@@ -1,7 +1,7 @@
-package model__3.Element.Mobile;
+package model.Element.Mobile;
 
 public class Diamond extends Mobile {
-	private char _sPRITE = 'D';
+	private char SPRITE = 'D';
 
 	public Diamond() {
 		throw new UnsupportedOperationException();

@@ -1,6 +1,6 @@
-package model__3.Element;
+package model.Element;
 
-import model__3.Map;
+import model.Map;
 
 public class Element {
 	private Permeability _permeability;

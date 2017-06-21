@@ -1,6 +1,6 @@
-package model__3.dao;
+package model.dao;
 
-import model__3.Example;
+import model.Example;
 import java.sql.SQLException;
 import java.util.List;
 

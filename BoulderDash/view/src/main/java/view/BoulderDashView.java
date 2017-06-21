@@ -2,9 +2,9 @@ package view;
 
 import javax.swing.JFrame;
 
-import Package.IBoulderDashModel;
 import controller.BoulderDashController;
 import controller.PlayerController;
+import model.IBoulderDashModel;
 
 public class BoulderDashView extends JFrame {
 	public BoulderDashController _unnamed_BoulderDashController_;

@@ -1,4 +1,4 @@
-package model__3.Element.MotionlessElement;
+package model.Element.MotionlessElement;
 
 public class Exit extends MotionlessElement {
 	private char _sPRITE = 'S';

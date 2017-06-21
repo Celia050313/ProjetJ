@@ -1,7 +1,7 @@
-package model__3.Element.MotionlessElement;
+package model.Element.MotionlessElement;
 
-import model__3.Element.Permeability;
-import model__3.Element.Element;
+import model.Element.Permeability;
+import model.Element.Element;
 
 public class MotionlessElement extends Element {
 

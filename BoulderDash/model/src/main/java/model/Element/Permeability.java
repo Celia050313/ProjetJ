@@ -1,4 +1,4 @@
-package model__3.Element;
+package model.Element;
 
 public enum Permeability {
 	BLOCKING, 

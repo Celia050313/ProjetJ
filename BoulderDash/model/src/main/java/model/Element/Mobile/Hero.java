@@ -1,7 +1,7 @@
-package model__3.Element.Mobile;
+package model.Element.Mobile;
 
 public class Hero extends Mobile {
-	private char__H_ _sPRITE;
+	private char SPRITE = 'H';
 
 	public Hero() {
 		throw new UnsupportedOperationException();

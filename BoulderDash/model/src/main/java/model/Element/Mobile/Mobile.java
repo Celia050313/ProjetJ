@@ -1,11 +1,11 @@
-package model__3.Element.Mobile;
+package model.Element.Mobile;
 
-import model__3.Element.Permeability;
-import model__3.Element.Element;
+import model.Element.Element;
+import model.Element.Permeability;
 
 public class Mobile extends Element {
 
-	public Mobile(char aSprite, Permeability aPermeability) {
+	public Mobile(char Sprite, Permeability Permeability) {
 		throw new UnsupportedOperationException();
 	}
 

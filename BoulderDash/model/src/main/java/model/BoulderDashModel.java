@@ -1,6 +1,6 @@
 package model;
 
-import controller.src.main.java.controller.BoulderDashController;
+import controller.BoulderDashController;
 
 public class BoulderDashModel {
 	public BoulderDashController _unnamed_BoulderDashController_;

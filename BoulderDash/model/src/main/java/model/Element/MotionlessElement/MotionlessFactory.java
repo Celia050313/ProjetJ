@@ -1,4 +1,4 @@
-package model__3.Element.MotionlessElement;
+package model.Element.MotionlessElement;
 
 public abstract class MotionlessFactory {
 	private Wall _wALL = new Wall();

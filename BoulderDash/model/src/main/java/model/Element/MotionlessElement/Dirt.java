@@ -1,4 +1,4 @@
-package model__3.Element.MotionlessElement;
+package model.Element.MotionlessElement;
 
 public class Dirt extends MotionlessElement {
 	private char _sPRITE = 'D';

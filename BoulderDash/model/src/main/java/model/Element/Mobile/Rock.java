@@ -1,4 +1,4 @@
-package model__3.Element.Mobile;
+package model.Element.Mobile;
 
 public class Rock extends Mobile {
 	private char _sPRITE = 'R';

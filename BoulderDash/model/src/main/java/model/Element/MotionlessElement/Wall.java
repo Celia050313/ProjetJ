@@ -1,4 +1,4 @@
-package model__3.Element.MotionlessElement;
+package model.Element.MotionlessElement;
 
 public class Wall extends MotionlessElement {
 	private char__W_ _sPRITE;

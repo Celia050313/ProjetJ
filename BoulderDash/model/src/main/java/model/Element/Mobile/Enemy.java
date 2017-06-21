@@ -1,7 +1,7 @@
-package model__3.Element.Mobile;
+package model.Element.Mobile;
 
 public class Enemy extends Mobile {
-	private char _sPRITE = 'E';
+	private char SPRITE = 'E';
 
 	public Enemy() {
 		throw new UnsupportedOperationException();

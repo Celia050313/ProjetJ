@@ -3,6 +3,9 @@
 	<name>controller</name>
 	<comment></comment>
 	<projects>
+		<project>boulderdash</project>
+		<project>model</project>
+		<project>view</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

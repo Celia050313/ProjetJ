@@ -1,10 +1,14 @@
 package controller;
 
+import model.BoulderDashModel;
+import view.BoulderDashView;
+import view.keyController;
+
 public class BoulderDashController {
-	//public keyController unnamedkeyController;
-	/*public BoulderDashView unnamedBoulderDashView;
+	private keyController unnamedkeyController;
+	public BoulderDashView unnamedBoulderDashView;
 	public BoulderDashModel unnamedBoulderDashModel;
-	public BoulderDashView unnamedBoulderDashView2;*/
+	public BoulderDashView unnamedBoulderDashView2;
 
 	public void play() {
 		throw new UnsupportedOperationException();

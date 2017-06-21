@@ -1,6 +1,6 @@
 package main;
 
-
+/*
 import java.sql.SQLException;
 
 import controller.ControllerFacade;
@@ -13,7 +13,7 @@ import view.ViewFacade;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public abstract class Main {
+/*public abstract class Main {
 
     /**
      * The main method.
@@ -21,7 +21,7 @@ public abstract class Main {
      * @param args
      *            the arguments
      */
-    public static void main(final String[] args) {
+ /*   public static void main(final String[] args) {
         final ControllerFacade controller = new ControllerFacade(new ViewFacade(), new ModelFacade());
 
         try {
@@ -31,4 +31,4 @@ public abstract class Main {
         }
     }
 
-}
+}*/
