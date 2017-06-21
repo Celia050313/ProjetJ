@@ -7,3 +7,5 @@ public class Diamond extends Mobile {
 		throw new UnsupportedOperationException();
 	}
 }
+
+//test
