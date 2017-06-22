@@ -1,11 +1,11 @@
 package model.Element.Mobile;
 
+import model.Element.Permeability;
+
 public class Diamond extends Mobile {
-	private char SPRITE = 'D';
+
+	private static char SPRITE = 'D';
 
 	public Diamond() {
-		throw new UnsupportedOperationException();
 	}
 }
-
-//test

@@ -5,7 +5,7 @@ import model.Element.Element;
 
 public class MotionlessElement extends Element {
 
-	public MotionlessElement(char aSprite, Permeability aPermeability) {
+	public MotionlessElement(char Sprite, Permeability Permeability) {
 		throw new UnsupportedOperationException();
 	}
 }

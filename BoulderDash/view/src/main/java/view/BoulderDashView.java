@@ -7,6 +7,7 @@ import controller.PlayerController;
 import model.IBoulderDashModel;
 
 public class BoulderDashView extends JFrame {
+//	private static final long serialVersionUID = 1L;
 	public BoulderDashController _unnamed_BoulderDashController_;
 	public PlayerController _unnamed_PlayerController_;
 	public IBoulderDashModel _unnamed_IBoulderDashModel_;

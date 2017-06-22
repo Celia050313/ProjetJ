@@ -4,6 +4,7 @@ import model.Element.Element;
 import model.Element.Permeability;
 
 public class Mobile extends Element {
+	
 
 	public Mobile(char Sprite, Permeability Permeability) {
 		throw new UnsupportedOperationException();
@@ -27,5 +28,8 @@ public class Mobile extends Element {
 
 	public boolean visible() {
 		throw new UnsupportedOperationException();
+		
+		
 	}
+
 }

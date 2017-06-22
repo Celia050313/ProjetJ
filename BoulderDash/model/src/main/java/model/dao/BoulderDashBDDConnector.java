@@ -1,4 +1,4 @@
-package model__3.dao;
+package model.dao;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -35,7 +35,7 @@ final class BoulderDashBDDConnector {
 	/**
 	 * The instance.
 	 */
-	private static BoulderDashBDDConnector _instance;
+	private static BoulderDashBDDConnector instance;
 
 	/**
 	 * Instantiates a new boulder dash BDD connector.
@@ -49,7 +49,7 @@ final class BoulderDashBDDConnector {
 	 * @param aInstance the new instance
 	 */
 	private static void setInstance(final BoulderDashBDDConnector aInstance) {
-		this._instance = aInstance;
+		instance = aInstance;
 	}
 
 	/**
@@ -92,7 +92,7 @@ final class BoulderDashBDDConnector {
 	 * @return single instance of BoulderDashBDDConnector
 	 */
 	public static BoulderDashBDDConnector getInstance() {
-		return this._instance;
+		return instance;
 	}
 
 	/**
