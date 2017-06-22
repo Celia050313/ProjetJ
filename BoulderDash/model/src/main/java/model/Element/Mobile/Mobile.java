@@ -1,7 +1,6 @@
 package model.Element.Mobile;
 
-import model.Element.Element;
-import model.Element.Permeability;
+import model.Element.*;
 
 public class Mobile extends Element {
 	

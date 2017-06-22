@@ -1,7 +1,5 @@
 package model.Element.Mobile;
 
-import model.Element.Permeability;
-
 public abstract class MobileFactory {
 	
 	private static final Hero Hero = new Hero();

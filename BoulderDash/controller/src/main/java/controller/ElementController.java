@@ -1,12 +1,18 @@
 package controller;
 
 public class ElementController {
+
 	private int x;
 	private int y;
 	private boolean alive;
-	//public Element _unnamed_Element_;
 
-	public void movePosition(Object aX, Object aY) {
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 */
+	public void movePosition(int x, int y) {
+		// TODO - implement ElementController.movePosition
 		throw new UnsupportedOperationException();
 	}
 
@@ -14,23 +20,38 @@ public class ElementController {
 		return this.x;
 	}
 
-	public void setX(int aX) {
-		this.x = aX;
+	/**
+	 * 
+	 * @param x
+	 */
+	public void setX(int x) {
+		this.x = x;
 	}
 
 	public int getY() {
 		return this.y;
 	}
 
-	public void setY(int aY) {
-		this.y = aY;
+	/**
+	 * 
+	 * @param y
+	 */
+	public void setY(int y) {
+		this.y = y;
 	}
 
 	public void testEmptySpot() {
+		// TODO - implement ElementController.testEmptySpot
 		throw new UnsupportedOperationException();
 	}
 
-	public void setAlive() {
-		throw new UnsupportedOperationException();
+
+	public boolean isAlive() {
+		return alive;
 	}
+
+	public void setAlive(boolean alive) {
+		this.alive = alive;
+	}
+
 }

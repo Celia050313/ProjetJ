@@ -1,7 +1,6 @@
 package model.Element.MotionlessElement;
 
-import model.Element.Permeability;
-import model.Element.Element;
+import model.Element.*;
 
 public class MotionlessElement extends Element {
 

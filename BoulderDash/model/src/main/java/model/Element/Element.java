@@ -1,57 +1,83 @@
 package model.Element;
 
-import model.Map;
-
 public class Element {
-	private Permeability _permeability;
-	private char _sprite;
-	private boolean _alive;
-	private int _x;
-	private int _y;
-	public Map _unnamed_Map_;
-	public Permeability _unnamed_Permeability_;
+
+	private Permeability permeability;
+	private char sprite;
+	private boolean alive;
+	private int x;
+	private int y;
 
 	public Permeability getPermeability() {
-		return this._permeability;
+		return this.permeability;
 	}
 
-	public void setPermeability(Permeability aPermeability) {
-		this._permeability = aPermeability;
+	/**
+	 * 
+	 * @param permeability
+	 */
+	public void setPermeability(Permeability permeability) {
+		this.permeability = permeability;
 	}
 
 	public char getSprite() {
-		return this._sprite;
+		return this.sprite;
 	}
 
-	public void setSprite(char aSprite) {
-		this._sprite = aSprite;
+	/**
+	 * 
+	 * @param sprite
+	 */
+	public void setSprite(char sprite) {
+		this.sprite = sprite;
 	}
 
-	public void getStatus(Object aAlive) {
+	/**
+	 * 
+	 * @param alive
+	 */
+	public void getStatus(int alive) {
+		// TODO - implement Element.getStatus
 		throw new UnsupportedOperationException();
 	}
 
-	public boolean testCollide(Permeability aPermeability, char aSprite) {
+	/**
+	 * 
+	 * @param permeability
+	 * @param sprite
+	 */
+	public boolean testCollide(Permeability permeability, char sprite) {
+		// TODO - implement Element.testCollide
 		throw new UnsupportedOperationException();
 	}
 
 	public void move() {
+		// TODO - implement Element.move
 		throw new UnsupportedOperationException();
 	}
 
 	public int getX() {
-		return this._x;
+		return this.x;
 	}
 
-	public void setX(int aX) {
-		this._x = aX;
+	/**
+	 * 
+	 * @param x
+	 */
+	public void setX(int x) {
+		this.x = x;
 	}
 
 	public int getY() {
-		return this._y;
+		return this.y;
 	}
 
-	public void setY(int aY) {
-		this._y = aY;
+	/**
+	 * 
+	 * @param y
+	 */
+	public void setY(int y) {
+		this.y = y;
 	}
+	
 }

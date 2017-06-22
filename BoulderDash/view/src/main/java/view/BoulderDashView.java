@@ -1,21 +1,35 @@
 package view;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 import controller.BoulderDashController;
 import controller.PlayerController;
+import javax.swing.*;
 
-public class BoulderDashView extends JFrame {
-	public BoulderDashController _unnamed_BoulderDashController_;
-	public PlayerController _unnamed_PlayerController_;
-	public BoulderDashController _unnamed_BoulderDashController_2;
+public class BoulderDashView{
+
 
 	public int displayDiamondNumber() {
+		// TODO - implement BoulderDashView.displayDiamondNumber
+		throw new UnsupportedOperationException();
+	}
+	
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @param SPRITE
+	 */
+	public void displayMap(int x, int y, int SPRITE) {
+		// TODO - implement BoulderDashView.displayMap
 		throw new UnsupportedOperationException();
 	}
 
-	public void displayMap(Object aX, Object aY, Object aSPRITE) {
+	/**
+	 * 
+	 * @param dimension
+	 */
+	public void displayWindow(int dimension) {
+		// TODO - implement BoulderDashView.displayWindow
 		throw new UnsupportedOperationException();
 	}
+
 }

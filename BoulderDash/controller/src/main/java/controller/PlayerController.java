@@ -1,9 +1,9 @@
 package controller;
 
 public class PlayerController {
+	
 	private int player;
 	private int order;
-	//public BoulderDashView unnamedBoulderDashView;
 
 	public int getOrder() {
 		return this.order;
@@ -13,7 +13,7 @@ public class PlayerController {
 		return this.player;
 	}
 
-	public void UserOrder(int aPlayer, int aOrder) {
+	public void UserOrder(int Player, int Order) {
 		throw new UnsupportedOperationException();
 	}
 }

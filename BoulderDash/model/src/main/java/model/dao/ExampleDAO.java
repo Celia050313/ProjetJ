@@ -2,7 +2,7 @@ package model.dao;
 
 import model.Example;
 import java.sql.SQLException;
-import java.util.List;
+
 
 /**
  * <h1>The Class ExampleDAO.</h1>

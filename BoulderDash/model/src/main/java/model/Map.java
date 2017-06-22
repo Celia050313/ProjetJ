@@ -1,43 +1,55 @@
 package model;
 
-import model.Element.Element;
-
 public class Map {
-	private int _dimention;
-	private int _diamondNumber;
-	private int _diamondCollected;
-	private int _choiceMap;
-	public Element _unnamed_Element_;
 
-	public int getDimention() {
-		return this._dimention;
+	private int dimension;
+	private int DiamondNumber;
+	private int DiamondCollected;
+	private int choiceMap;
+
+	public int getDimension() {
+		return this.dimension;
 	}
 
-	public void setDimention(int aDimention) {
-		this._dimention = aDimention;
+	/**
+	 * 
+	 * @param dimension
+	 */
+	public void setDimension(int dimension) {
+		this.dimension = dimension;
 	}
 
 	public int getDiamondNumber() {
-		return this._diamondNumber;
+		// TODO - implement Map.getDiamondNumber
+		throw new UnsupportedOperationException();
 	}
 
-	public void setDiamondNumber(int aDiamondNumber) {
-		this._diamondNumber = aDiamondNumber;
+	/**
+	 * 
+	 * @param DiamondNumber
+	 */
+	public void setDiamondNumber(int DiamondNumber) {
+		// TODO - implement Map.setDiamondNumber
+		throw new UnsupportedOperationException();
 	}
 
 	public int getDiamondCollected() {
-		return this._diamondCollected;
-	}
-
-	public void setDiamondCollected(int aDiamondCollected) {
-		this._diamondCollected = aDiamondCollected;
-	}
-
-/*	public tab table() {
-		throw new UnsupportedOperationException();
-	}*/
-
-	public void Map() {
+		// TODO - implement Map.getDiamondCollected
 		throw new UnsupportedOperationException();
 	}
+
+	/**
+	 * 
+	 * @param DiamondCollected
+	 */
+	public void setDiamondCollected(int DiamondCollected) {
+		// TODO - implement Map.setDiamondCollected
+		throw new UnsupportedOperationException();
+	}
+
+	public Map() {
+		// TODO - implement Map.Map
+		throw new UnsupportedOperationException();
+	}
+
 }

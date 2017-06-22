@@ -1,22 +1,34 @@
 package view;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
-import controller.BoulderDashController;
+import java.awt.event.*;
 
 public class keyController implements KeyListener {
-	public BoulderDashController BoulderDashController_;
 
-	public void keyPressed(KeyEvent aKeyEvent) {
+	/**
+	 * 
+	 * @param keyEvent
+	 */
+	public void keyPressed(KeyEvent keyEvent) {
+		// TODO - implement keyController.keyPressed
 		throw new UnsupportedOperationException();
 	}
 
-	public void keyReleased(KeyEvent aKeyEvent) {
+	/**
+	 * 
+	 * @param keyEvent
+	 */
+	public void keyReleased(KeyEvent keyEvent) {
+		// TODO - implement keyController.keyReleased
 		throw new UnsupportedOperationException();
 	}
 
-	public void keyTyped(KeyEvent aKeyEvent) {
+	/**
+	 * 
+	 * @param keyEvent
+	 */
+	public void keyTyped(KeyEvent keyEvent) {
+		// TODO - implement keyController.keyTyped
 		throw new UnsupportedOperationException();
 	}
+
 }
