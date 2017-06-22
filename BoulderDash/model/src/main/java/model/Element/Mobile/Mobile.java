@@ -5,6 +5,8 @@ import model.Element.Permeability;
 
 public class Mobile extends Element {
 	
+	public Mobile() {
+	}
 
 	public Mobile(char Sprite, Permeability Permeability) {
 		throw new UnsupportedOperationException();
