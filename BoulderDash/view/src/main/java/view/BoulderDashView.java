@@ -1,16 +1,14 @@
 package view;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import controller.BoulderDashController;
 import controller.PlayerController;
-import model.IBoulderDashModel;
 
 public class BoulderDashView extends JFrame {
-//	private static final long serialVersionUID = 1L;
 	public BoulderDashController _unnamed_BoulderDashController_;
 	public PlayerController _unnamed_PlayerController_;
-	public IBoulderDashModel _unnamed_IBoulderDashModel_;
 	public BoulderDashController _unnamed_BoulderDashController_2;
 
 	public int displayDiamondNumber() {
