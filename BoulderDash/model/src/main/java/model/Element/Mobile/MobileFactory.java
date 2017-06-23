@@ -9,7 +9,7 @@ public abstract class MobileFactory {
 	
 	private static Mobile[] Mobile = {Enemy, Rock, Hero, Diamond};
 	
-	public Mobile createEnemy() {
+/*	public Mobile createEnemy() {
 		return Enemy;
 	}
 	
@@ -23,5 +23,5 @@ public abstract class MobileFactory {
 	
 	public Mobile createDiamond() {
 		return Diamond;
-	}
+	}*/
 }

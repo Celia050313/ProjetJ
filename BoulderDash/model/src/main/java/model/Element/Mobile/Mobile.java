@@ -12,23 +12,31 @@ public class Mobile extends Element {
 	}
 
 	public void moveUp() {
-		throw new UnsupportedOperationException();
+		int Y1 = getY();
+		Y1++;
+		setY(Y1);
 	}
 
 	public void moveDown() {
-		throw new UnsupportedOperationException();
+		int Y2 = getY();
+		Y2--;
+		setY(Y2);
 	}
 
 	public void moveRight() {
-		throw new UnsupportedOperationException();
+		int X1 = getY();
+		X1--;
+		setY(X1);
 	}
 
 	public void moveLeft() {
-		throw new UnsupportedOperationException();
+		int X2 = getY();
+		X2--;
+		setY(X2);
 	}
 
 	public boolean visible() {
-		throw new UnsupportedOperationException();
+		return false;
 		
 		
 	}
