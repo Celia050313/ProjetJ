@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 
 /**
  * 
- * recovered key
+ * recovered key.
  * 
  *
  */
