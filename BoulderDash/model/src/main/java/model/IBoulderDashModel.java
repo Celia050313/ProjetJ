@@ -1,4 +1,4 @@
-package model;
+/*package model;
 
 import java.sql.SQLException;
 
@@ -8,7 +8,7 @@ import java.sql.SQLException;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public interface IBoulderDashModel {
+/*public interface IBoulderDashModel {
 
 	/**
 	 * Gets the example by id.
@@ -16,7 +16,7 @@ public interface IBoulderDashModel {
 	 * @return the example by id
 	 * @throws SQLException the SQL exception
 	 */
-	public Example getExampleById(int aId) throws java.sql.SQLException;
+/*	public Example getExampleById(int aId) throws java.sql.SQLException;
 
 	/**
 	 * Gets the example by name.
@@ -24,12 +24,14 @@ public interface IBoulderDashModel {
 	 * @return the example by name
 	 * @throws SQLException the SQL exception
 	 */
-	public Example getExampleByName(String aName) throws java.sql.SQLException;
+/*	public Example getExampleByName(String aName) throws java.sql.SQLException;
 
 	/**
 	 * Gets the all examples.
 	 * @return the all examples
 	 * @throws SQLException the SQL exception
 	 */
-	public java.util.List<Example> getAllExamples() throws java.sql.SQLException;
+/*	public java.util.List<Example> getAllExamples() throws java.sql.SQLException;
 }
+
+*/

@@ -12,5 +12,5 @@ public interface IBoulderDashView {
 	 * Display message.
 	 * @param aMessage the message
 	 */
-	public void displayMessage(String aMessage);
+	public void displayMessage(String Message);
 }

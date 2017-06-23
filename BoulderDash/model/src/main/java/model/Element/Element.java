@@ -40,10 +40,10 @@ public class Element {
 	/**
 	 * 
 	 * @param alive
+	 * @return 
 	 */
-	public void getStatus(int alive) {
-		// TODO - implement Element.getStatus
-		throw new UnsupportedOperationException();
+	public boolean getStatus(boolean alive) {
+		return this.alive;
 	}
 
 	/**
@@ -80,5 +80,15 @@ public class Element {
 	public static void setY(int y) {
 		Element.y = y;
 	}
+	
+/*	public Position getPosition()
+
+    {
+
+        Position  Position = new Position();
+
+        return Position;
+
+        }*/
 	
 }

@@ -11,7 +11,6 @@ public class Map {
 	private int dimension;
 	private int DiamondNumber;
 	private int DiamondCollected;
-	private int choiceMap;
 	private int idLevel;
 	private int x;
 	private int y;
