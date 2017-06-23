@@ -28,12 +28,19 @@ public class ElementTest {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * tests if getX sends back x
+	 */
+	
 	@Test
 	public void testGetX() {
 		Element.x =3;
 		assertEquals(Element.x,Element.getX());
 	}
 
+	/**
+	 * tests if setX affects the right number to x
+	 */
 
 	@Test
 	public void testSetX() {
@@ -42,12 +49,20 @@ public class ElementTest {
 	    assertEquals(expectedX, Element.getX());
 	}
 
+	/**
+	 * tests if getY sends back y
+	 */
+	
 	@Test
 	public void testGetY() {
 		Element.y =32;
 		assertEquals(Element.y,Element.getY());
 	}
 
+	/**
+	 * tests if setY affects the right number to y
+	 */
+	
 	@Test
 	public void testSetY() {
 		int expectedY = 16;

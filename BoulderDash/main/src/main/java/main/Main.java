@@ -1,7 +1,5 @@
 package main;
 
-import java.sql.SQLException;
-
 
 /**
  * <h1>The Class Main.</h1>
@@ -19,11 +17,7 @@ public abstract class Main {
      */
     public static void main(final String[] args) {
 
-        try {
-        	controller.BoulderDashController.play();
-        } catch (final SQLException exception) {
-            exception.printStackTrace();
-        }
+        controller.BoulderDashController.play();
     }
 
 }
