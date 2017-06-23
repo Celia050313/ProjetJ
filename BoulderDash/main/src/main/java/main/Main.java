@@ -17,6 +17,9 @@ public abstract class Main {
      */
     public static void main(final String[] args) {
 
+    	/**
+    	 * starts the game
+    	 */
         controller.BoulderDashController.play();
     }
 
