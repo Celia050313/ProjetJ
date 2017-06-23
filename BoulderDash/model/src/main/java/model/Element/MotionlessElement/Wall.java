@@ -6,7 +6,7 @@ package model.Element.MotionlessElement;
 /**
  * Wall Model
  *
- * Represents the brick wall in the game.
+ * Represents the brick wall in the game
  *
  *
  */
