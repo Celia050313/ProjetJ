@@ -13,25 +13,25 @@ public class Mobile extends Element {
 
 	public void moveUp() {
 		int Y1 = getY();
-		Y1++;
+		Y1=Y1+16;
 		setY(Y1);
 	}
 
 	public void moveDown() {
 		int Y2 = getY();
-		Y2--;
+		Y2=Y2-16;
 		setY(Y2);
 	}
 
 	public void moveRight() {
-		int X1 = getY();
-		X1--;
+		int X1 = getX();
+		X1=X1+16;
 		setY(X1);
 	}
 
 	public void moveLeft() {
-		int X2 = getY();
-		X2--;
+		int X2 = getX();
+		X2=X2-16;
 		setY(X2);
 	}
 
