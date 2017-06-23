@@ -24,7 +24,7 @@ public class Element {
 		this.permeability = permeability;
 	}
 
-	public char getSprite() {
+	public char getSprite(String spriteName) {
 		return this.sprite;
 	}
 
