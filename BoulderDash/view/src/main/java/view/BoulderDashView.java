@@ -3,15 +3,19 @@ package view;
 
 import controller.BoulderDashController;
 import controller.PlayerController;
+
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
+import javax.swing.JFrame;
 /**
  * 
  * Display all we need for the game
  *
  */
 
-public class BoulderDashView{
+public class BoulderDashView extends JFrame {
 
 /**
  * display the number of diamond needed to end the level
@@ -37,9 +41,19 @@ public class BoulderDashView{
 	 * create the window
 	 * @param dimension
 	 */
-	public void displayWindow(int dimension) {
+	public void displayWindow(int x, int y) {
+		
+		
+		
+		setSize(x * 16 , y * 16);
+        setResizable(false);       
+        setTitle("BoulderDash Java Game");
+        setLocationRelativeTo(null);
+        setUndecorated(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 	
-		throw new UnsupportedOperationException();
+		
 	}
 
 }
