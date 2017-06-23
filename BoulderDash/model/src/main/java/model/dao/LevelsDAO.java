@@ -11,16 +11,23 @@ import java.util.ArrayList;
 
 public abstract class LevelsDAO  extends AbstractDAO{
 
-	// the stored procedures are stocked in order an easier access
 	
+	/**
+	 * the stored procedures are stocked in order an easier access
+	 */
     private static String getLevel1   = "{call (display_level_1)}";
     private static String getLevel2   = "{call (display_level_2)}";
     private static String getLevel3   = "{call (display_level_3)}";
     private static String getLevel4   = "{call (display_level_4)}";
     private static String getLevel5   = "{call (display_level_5)}";
 
-    // this block of code is used for adding to the corresponding array list each element of a level (one column after another)
-     
+    
+    /**
+	 * this block of code is used for adding to the corresponding array list each element of a level (one column after another) (*5)
+	 * @param line
+	 * @return
+	 * @throws SQLException
+	 */
 
 public static ArrayList<String> getLevel1(int line) throws SQLException {
     final ArrayList<String> map_elements = new ArrayList<String>();
@@ -102,8 +109,15 @@ public static ArrayList<String> getLevel5(int line) throws SQLException {
 	return map_elements;
 	}
 
-	// this section is calling each row in order to stock them in another list, in the same way as a double-entry table
-
+	
+/**
+ * this section is calling each row in order to stock them in another list, in the same way as a double-entry table
+ * @param idLevel
+ * @param line
+ * @param collumn
+ * @return
+ * @throws SQLException
+ */
 	public static String getElement(int idLevel, int line, int collumn) throws SQLException{
 		String element = "";
 		ArrayList<String> element_Row = new ArrayList<String>();
