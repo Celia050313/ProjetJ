@@ -1,12 +1,16 @@
 package model.Element;
 
+import java.awt.event.KeyEvent;
+
+import model.Element.Mobile.*;
+
 public class Element {
 
 	private Permeability permeability;
 	private char sprite;
 	private boolean alive;
-	private int x;
-	private int y;
+	protected static int x;
+	protected static int y;
 
 	public Permeability getPermeability() {
 		return this.permeability;
@@ -51,33 +55,29 @@ public class Element {
 		throw new UnsupportedOperationException();
 	}
 
-	public void move() {
-		// TODO - implement Element.move
-		throw new UnsupportedOperationException();
-	}
 
-	public int getX() {
-		return this.x;
+	public static int getX() {
+		return x;
 	}
 
 	/**
 	 * 
 	 * @param x
 	 */
-	public void setX(int x) {
-		this.x = x;
+	public static void setX(int x) {
+		Element.x = x;
 	}
 
-	public int getY() {
-		return this.y;
+	public static int getY() {
+		return y;
 	}
 
 	/**
 	 * 
 	 * @param y
 	 */
-	public void setY(int y) {
-		this.y = y;
+	public static void setY(int y) {
+		Element.y = y;
 	}
 	
 }

@@ -29,10 +29,11 @@ public class Mobile extends Element {
 		setY(X1);
 	}
 
-	public void moveLeft() {
+	public int moveLeft() {
 		int X2 = getX();
 		X2=X2-16;
 		setY(X2);
+		return X2;
 	}
 
 	public boolean visible() {

@@ -2,7 +2,7 @@ package controller;
 
 public class BoulderDashController {
 
-	public void play() {
+	public static void play() {
 		// TODO - implement BoulderDashController.play
 		throw new UnsupportedOperationException();
 	}
