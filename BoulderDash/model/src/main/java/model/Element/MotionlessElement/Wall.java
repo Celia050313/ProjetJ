@@ -14,7 +14,7 @@ public class Wall extends MotionlessElement {
 	private static String spriteName;
 	private static boolean isDestructible;
 	private static boolean canMove;
-	
+	private char SPRITE = 'W';
 	
     /**
      * Static dataset
