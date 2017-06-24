@@ -47,7 +47,7 @@ public class Element {
 	}
 
 	/**
-	 * 
+	 * test the permeability of the elements that collided
 	 * @param permeability
 	 * @param sprite
 	 */

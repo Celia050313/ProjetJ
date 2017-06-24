@@ -11,6 +11,9 @@ public class Mobile extends Element {
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Moves the element according to its previous position and the pressed key
+	 */
 	public void moveUp() {
 		int Y1 = getY();
 		Y1=Y1+16;
@@ -36,6 +39,10 @@ public class Mobile extends Element {
 		return X2;
 	}
 
+	/**
+	 * change the status of the element if needed
+	 * @return
+	 */
 	public boolean visible() {
 		return false;
 		

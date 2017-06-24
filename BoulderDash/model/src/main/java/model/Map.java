@@ -15,25 +15,42 @@ public class Map {
 	private int x;
 	private int y;
 
+	
+	/**
+	 * instantiate the map
+	 */
+	public Map() {
+		// TODO - implement Map.Map
+		throw new UnsupportedOperationException();
+	}
+	
+	/**
+	 * getter for the map dimension
+	 * @return
+	 */
 	public int getDimension() {
 		return this.dimension;
 	}
 
 	/**
-	 * 
+	 * setter for the map dimension
 	 * @param dimension
 	 */
 	public void setDimension(int dimension) {
 		this.dimension = dimension;
 	}
 
+	/**
+	 * getter for the number of diamonds to collect to finish the level
+	 * @return
+	 */
 	public int getDiamondNumber() {
 		// TODO - implement Map.getDiamondNumber
 		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * 
+	 * setter for the number of diamonds to collect to finish the level
 	 * @param DiamondNumber
 	 */
 	public void setDiamondNumber(int DiamondNumber) {
@@ -41,13 +58,17 @@ public class Map {
 		throw new UnsupportedOperationException();
 	}
 
-	public int getDiamondCollected() {
+	/**
+	 * getter for the number of diamonds already collected
+	 * @return
+	 */
+	public static int getDiamondCollected() {
 		// TODO - implement Map.getDiamondCollected
 		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * 
+	 * setter for the number of diamonds already collected
 	 * @param DiamondCollected
 	 */
 	public void setDiamondCollected(int DiamondCollected) {
@@ -74,9 +95,6 @@ public class Map {
 		}
 	}
 	
-	public Map() {
-		// TODO - implement Map.Map
-		throw new UnsupportedOperationException();
-	}
+	
 	
 }

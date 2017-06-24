@@ -18,12 +18,16 @@ import javax.swing.JFrame;
 public class BoulderDashView extends JFrame {
 
 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+/**
  * display the number of diamond needed to end the level
  * @return
  */
-	public int displayDiamondNumber() {
-		
-		throw new UnsupportedOperationException();
+	public void displayDiamondNumber(int diamondNumber) {
+		diamondNumber = model.Map.getDiamondCollected() - BoulderDashController.diamondCollected();
 	}
 	
 	/**

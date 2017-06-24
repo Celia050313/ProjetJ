@@ -39,17 +39,30 @@ public class ElementController {
 	public void setY(int y) {
 		this.y = y;
 	}
+	
+	/**
+	 * tell the model it has to test the permeability of the spot
+	 */
 
 	public void testEmptySpot() {
 		// TODO - implement ElementController.testEmptySpot
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * get the value of alive
+	 * @return
+	 */
 
 	public boolean isAlive() {
 		return alive;
 	}
 
+	
+	/**
+	 * set the value of alive
+	 */
+	
 	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}

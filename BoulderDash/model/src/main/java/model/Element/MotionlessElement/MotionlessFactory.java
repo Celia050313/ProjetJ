@@ -9,6 +9,9 @@ public abstract class MotionlessFactory {
 	private static final Dirt Dirt = new Dirt();
 	private static final Exit Exit = new Exit();
 	
+	/**
+	 * factory for motionless elements
+	 */
 	private static MotionlessElement[] MotionlessElement = {Dirt, Exit, Wall};
 	
 	

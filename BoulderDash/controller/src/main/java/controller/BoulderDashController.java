@@ -1,24 +1,29 @@
 package controller;
 
 public class BoulderDashController {
+	
+	/**
+	 * Starts the game
+	 */
 
 	public static void play() {
 		// TODO - implement BoulderDashController.play
 		throw new UnsupportedOperationException();
 	}
 
-	public int diamondCollected() {
+	/**
+	 * send when a diamond has been collected
+	 * @return
+	 */
+	
+	public static int diamondCollected() {
 		// TODO - implement BoulderDashController.diamondCollected
 		throw new UnsupportedOperationException();
 	}
 
-	public void getDimension() {
-		// TODO - implement BoulderDashController.getDimension
-		throw new UnsupportedOperationException();
-	}
 
 	/**
-	 * 
+	 * get the dimension to send it to the view
 	 * @param dimension
 	 */
 	public int getDimension(int dimension) {

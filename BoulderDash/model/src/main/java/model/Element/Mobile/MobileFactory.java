@@ -7,6 +7,9 @@ public abstract class MobileFactory {
 	private static final Diamond Diamond = new Diamond();
 	private static final Enemy Enemy = new Enemy();
 	
+	/**
+	 * Factory for mobile elements
+	 */
 	private static Mobile[] Mobile = {Enemy, Rock, Hero, Diamond};
 	
 	public Mobile createEnemy() {
