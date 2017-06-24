@@ -24,7 +24,7 @@ public class BoulderDashView extends JFrame {
 
 /**
  * display the number of diamond needed to end the level
- * @return
+ * 
  */
 	public void displayDiamondNumber(int diamondNumber) {
 		diamondNumber = model.Map.getDiamondCollected() - BoulderDashController.diamondCollected();
@@ -43,7 +43,7 @@ public class BoulderDashView extends JFrame {
 
 	/**
 	 * create the window
-	 * @param dimension
+	 * 
 	 */
 	public void displayWindow(int x, int y) {
 		

@@ -10,7 +10,7 @@ public interface IBoulderDashView {
 
 	/**
 	 * Display message.
-	 * @param aMessage the message
+	 * @param Message the message
 	 */
 	public void displayMessage(String Message);
 }
