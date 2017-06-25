@@ -1,8 +1,10 @@
 package main;
 
+import view.*;
+
 import controller.BoulderDashController;
 
-public abstract class Main {
+public class Main {
 
     /**
      * The main method.
@@ -10,12 +12,15 @@ public abstract class Main {
      * @param args
      *            the arguments
      */
-    public static void main(final String[] args) {
+    public void main(final String[] args) {
 
     	/**
     	 * starts the game
     	 */
+    	
        BoulderDashController.play();
+       
+       BoulderDashView.displayWindow(50,50);
     }
 
 }

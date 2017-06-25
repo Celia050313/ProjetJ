@@ -2,6 +2,7 @@ package view;
 
 
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 
 
@@ -18,6 +19,8 @@ public class keyController {
     private int dy;
     private int x;
     private int y;
+    
+ 
 
 
     public keyController() {

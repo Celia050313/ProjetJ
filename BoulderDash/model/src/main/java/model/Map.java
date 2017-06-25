@@ -8,7 +8,7 @@ import static model.dao.LevelsDAO.getElement;
 
 public class Map {
 
-	private int dimension;
+	private static int dimension = 50;
 	private int DiamondNumber;
 	private int DiamondCollected;
 	private int idLevel;
@@ -28,8 +28,8 @@ public class Map {
 	 * getter for the map dimension
 	 * @return
 	 */
-	public int getDimension() {
-		return this.dimension;
+	public static int getDimension() {
+		return dimension;
 	}
 
 	/**
@@ -37,7 +37,7 @@ public class Map {
 	 * @param dimension
 	 */
 	public void setDimension(int dimension) {
-		this.dimension = dimension;
+		Map.dimension = dimension;
 	}
 
 	/**
