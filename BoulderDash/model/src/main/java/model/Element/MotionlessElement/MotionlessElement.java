@@ -1,19 +1,16 @@
 package model.Element.MotionlessElement;
 
-import model.Element.*;
+import model.Element.Element;
+import model.Element.Permeability;
+import model.Element.Sprite;
 
-public class MotionlessElement extends Element {
-/**
- * Instantiate a new motionless element
- */
-	public MotionlessElement() {
-	}
-	/**
-	 * affect a sprite and a permeability to an element
-	 * @param Sprite
-	 * @param Permeability
+abstract class MotionlessElement extends Element {
+
+	/*
+	 * Instantiates a motionless element
 	 */
-	public MotionlessElement(char Sprite, Permeability Permeability) {
-		throw new UnsupportedOperationException();
+	public MotionlessElement(Sprite sprite, Permeability permeability) {
+		super(sprite, permeability);
 	}
+	
 }

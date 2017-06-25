@@ -1,9 +1,16 @@
 package model.Element.MotionlessElement;
 
+import model.Element.Permeability;
+import model.Element.Sprite;
+
 public class Exit extends MotionlessElement {
 
-	private char SPRITE = 'S';
-
+	private static final Sprite SPRITE = new Sprite('S', "Exit.png");
+	
+	Exit() {
+		super(SPRITE, Permeability.PENETRABLE);
+	}
+	
 	/**
 	 * 
 	 * @param DiamondNumber

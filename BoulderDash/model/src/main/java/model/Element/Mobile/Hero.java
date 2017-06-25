@@ -1,10 +1,10 @@
 package model.Element.Mobile;
 
-import java.awt.event.KeyEvent;
+import model.Element.Sprite;
 
 public class Hero extends Mobile {
 	
-	private char SPRITE = 'H';
+	private static final Sprite SPRITE = new Sprite('H', "Hero.png");
 
 	public int pickUpDiamond() {
 		throw new UnsupportedOperationException();

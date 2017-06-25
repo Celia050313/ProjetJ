@@ -6,8 +6,8 @@ public abstract class MotionlessFactory {
 	 * creates the different elements
 	 */
 	private static final Wall Wall = new Wall();
-	private static final Dirt Dirt = new Dirt();
 	private static final Exit Exit = new Exit();
+	private static final Dirt Dirt = new Dirt();
 	
 	/**
 	 * factory for motionless elements

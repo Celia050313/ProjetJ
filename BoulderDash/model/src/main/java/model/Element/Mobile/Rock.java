@@ -1,7 +1,9 @@
 package model.Element.Mobile;
 
+import model.Element.Sprite;
+
 public class Rock extends Mobile {
 	
-	private char SPRITE = 'R';
+	private static final Sprite SPRITE = new Sprite('R', "Rock.png");
 
 }
