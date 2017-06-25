@@ -51,6 +51,15 @@ public abstract class BoulderDashView extends JFrame implements KeyListener, IBo
     public final void displayMessage(final String message) {
         JOptionPane.showMessageDialog(null, message);
     }
+    
+    /**
+     * display the number of diamond needed to end the level
+     * 
+     */
+    	public void displayDiamondToCollect( Graphics g) {
+    		String diamondLeft = BoulderDashController.diamondLeft();
+    		g.drawString(diamondLeft, 16, 16);
+    	}
 	
 	private static UserOrder keyCodeToUserOrder(int keyCode) {
 		UserOrder userOrder;
@@ -94,16 +103,6 @@ public abstract class BoulderDashView extends JFrame implements KeyListener, IBo
 	    public void keyReleased(final KeyEvent keyEvent) {
 	        // Not used
 	    }
-
-/**
- * display the number of diamond needed to end the level
- * 
- */
-	public void displayDiamondNumber( Graphics g) {
-		
-		String diamondLeft = BoulderDashController.diamondLeft();
-		g.drawString(diamondLeft, 16, 16);
-	}
 	
 	/**
 	 * Display the sprite on the window

@@ -44,7 +44,7 @@ public class Map {
 	 * getter for the number of diamonds to collect to finish the level
 	 * @return
 	 */
-	public int getDiamondNumber() {
+	public static int getDiamondNumber() {
 		// TODO - implement Map.getDiamondNumber
 		throw new UnsupportedOperationException();
 	}

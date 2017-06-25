@@ -1,26 +1,26 @@
 package main;
 
-import view.*;
+import java.awt.DisplayMode;
+import java.io.IOException;
 
 import controller.BoulderDashController;
+import controller.IBoulderDashController;
+import model.IBoulderDashModel;
 
-public class Main {
+public abstract class Main {
 
     /**
      * The main method.
+     * Starts the game
      *
      * @param args
-     *            the arguments
+     *    
      */
-    public void main(final String[] args) {
-
-    	/**
-    	 * starts the game
-    	 */
-    	
-       BoulderDashController.play();
+    public static void main(final String[] args) throws IOException, InterruptedException {
+    	final IBoulderDashModel model = new BoulderDashModel();
+    	final BoulderDashView view = new BoulderDashView();
+    	final IBoulderDashController controller = new BoulderDashController(view, model);
        
-       BoulderDashView.displayWindow(50,50);
+    	controller.play();
     }
-
 }

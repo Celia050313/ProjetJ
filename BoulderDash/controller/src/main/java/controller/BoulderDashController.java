@@ -1,6 +1,7 @@
 package controller;
 
 import model.IBoulderDashModel;
+import model.Map;
 import view.IBoulderDashView;
 
 
@@ -31,28 +32,17 @@ public class BoulderDashController implements controller.IBoulderDashController,
 	        this.setStackOrder(userOrder);
 	    }
 
+	
+	public static String diamondLeft() {
+		int diamondL = Map.getDiamondNumber() - Map.getDiamondCollected();
+		String diamondLeft = Integer.toString(diamondL);
+		return diamondLeft;
+	}
+	
 	/**
-	 * send when a diamond has been collected
+	 * gets the view
 	 * @return
 	 */
-	
-	public static int diamondCollected() {
-		// TODO - implement BoulderDashController.diamondCollected
-		throw new UnsupportedOperationException();
-	}
-
-
-	/**
-	 * get the dimension to send it to the view
-	 * @param dimension
-	 */
-	public static int getDimension() {
-		return model.Map.getDimension();
-	}
-	public String diamondLeft() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
     private IBoulderDashView getView() {
         return this.view;
@@ -60,9 +50,7 @@ public class BoulderDashController implements controller.IBoulderDashController,
 
     /**
      * Sets the view.
-     *
-     * @param view
-     *            
+     * @param view         
      */
     private void setView(final IBoulderDashView view) {
         this.view = view;
@@ -70,7 +58,6 @@ public class BoulderDashController implements controller.IBoulderDashController,
 
     /**
      * Gets the model.
-     *
      * @return model
      */
     private IBoulderDashModel getModel() {
@@ -79,9 +66,7 @@ public class BoulderDashController implements controller.IBoulderDashController,
 
     /**
      * Sets the model.
-     *
-     * @param model
-     *        
+     * @param model      
      */
     private void setModel(final IBoulderDashModel model) {
         this.model = model;
@@ -89,7 +74,6 @@ public class BoulderDashController implements controller.IBoulderDashController,
 	
     /**
      * Gets the stack order.
-     *
      * @return stack order
      */
     private UserOrder getStackOrder() {
@@ -98,9 +82,7 @@ public class BoulderDashController implements controller.IBoulderDashController,
 
     /**
      * Sets the stack order.
-     *
      * @param stackOrder
-     *   
      */
     private void setStackOrder(final UserOrder stackOrder) {
         this.stackOrder = stackOrder;
