@@ -2,22 +2,29 @@ package view;
 
 
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controller.BoulderDashController;
+import controller.IOrderPerformer;
+import controller.UserOrder;
 /**
  * 
  * Display all we need for the game
  *
  */
 
-public abstract class BoulderDashView extends JFrame implements KeyListener {
+public abstract class BoulderDashView extends JFrame implements KeyListener, IBoulderDashView {
 
 
 	private static final long serialVersionUID = 1L;
+	
+	private IOrderPerformer orderPerformer;
 	
 
 	BoulderDashView() {
@@ -40,9 +47,53 @@ public abstract class BoulderDashView extends JFrame implements KeyListener {
         this.setVisible(true); 
 	}
 	
-	private static UserOrder keyCodeToUserOrder(final int keyCode) {
-		
+    @Override
+    public final void displayMessage(final String message) {
+        JOptionPane.showMessageDialog(null, message);
+    }
+	
+	private static UserOrder keyCodeToUserOrder(int keyCode) {
+		UserOrder userOrder;
+		switch (keyCode) {
+			case KeyEvent.VK_UP:
+				userOrder = UserOrder.UP;
+				break;
+			case KeyEvent.VK_DOWN:
+				userOrder = UserOrder.DOWN;
+				break;
+			case KeyEvent.VK_LEFT:
+				userOrder = UserOrder.LEFT;
+				break;
+			case KeyEvent.VK_RIGHT:
+				userOrder = UserOrder.RIGHT;
+				break;
+			default :
+				userOrder = UserOrder.NON;
+				break;
+		}
+		return userOrder;
 	}
+	
+	 @Override
+	    public void keyTyped(final KeyEvent keyEvent) {
+	        // Not used
+	    }
+
+	    
+	    @Override
+	    public final void keyPressed(final KeyEvent keyEvent) {
+	        try {
+	            this.getOrderPerformer().orderPerform(keyCodeToUserOrder(keyEvent.getKeyCode()));
+	        } catch (final IOException exception) {
+	            exception.printStackTrace();
+	        }
+	    }
+
+	    
+	    @Override
+	    public void keyReleased(final KeyEvent keyEvent) {
+	        // Not used
+	    }
 
 /**
  * display the number of diamond needed to end the level
@@ -65,9 +116,13 @@ public abstract class BoulderDashView extends JFrame implements KeyListener {
 		throw new UnsupportedOperationException();
 	}
 
+    private IOrderPerformer getOrderPerformer() {
+        return this.orderPerformer;
+    }
 
+   
+    public final void setOrderPerformer(IOrderPerformer orderPerformer) {
+        this.orderPerformer = orderPerformer;
+    }
 	
-	
-
-
 }

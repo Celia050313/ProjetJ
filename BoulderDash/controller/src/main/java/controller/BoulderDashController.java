@@ -1,16 +1,16 @@
 package controller;
 
-import java.io.IOException;
+import model.IBoulderDashModel;
+import view.IBoulderDashView;
 
-import view.BoulderDashView;
 
-
-public class BoulderDashController {
+public class BoulderDashController implements controller.IBoulderDashController, IOrderPerformer{
+	
 	private IBoulderDashModel model;
 	private IBoulderDashView view;
 	private UserOrder stackOrder;
 	
-	BoulderDashController(final IBoulderDashView view, final IBoulderDashModel model) {
+	BoulderDashController(IBoulderDashView view, IBoulderDashModel model) {
 		this.setView(view);
 		this.setModel(model);
 		this.clearStackOrder();
@@ -20,17 +20,14 @@ public class BoulderDashController {
 	 * Starts the game
 	 */
 
-	public static void play() {
+	@Override
+	public void play() throws InterruptedException {
 		System.out.println("Hello gamer");
-		
-		/*BoulderDashController play = new BoulderDashController();
-    	int playable = BoulderDashController.BoulderDashView.displayWindow();
-    			
-		BoulderDashView.displayWindow(getDimension(), getDimension());*/
 	}
+		
 	
-	   @Override
-	    public final void orderPerform(final UserOrder userOrder) {
+	@Override
+	   public final void orderPerform(final UserOrder userOrder) {
 	        this.setStackOrder(userOrder);
 	    }
 
@@ -57,10 +54,43 @@ public class BoulderDashController {
 		return null;
 	}
 
+    private IBoulderDashView getView() {
+        return this.view;
+    }
+
+    /**
+     * Sets the view.
+     *
+     * @param view
+     *            
+     */
+    private void setView(final IBoulderDashView view) {
+        this.view = view;
+    }
+
+    /**
+     * Gets the model.
+     *
+     * @return model
+     */
+    private IBoulderDashModel getModel() {
+        return this.model;
+    }
+
+    /**
+     * Sets the model.
+     *
+     * @param model
+     *        
+     */
+    private void setModel(final IBoulderDashModel model) {
+        this.model = model;
+    }
+	
     /**
      * Gets the stack order.
      *
-     * @return the stack order
+     * @return stack order
      */
     private UserOrder getStackOrder() {
         return this.stackOrder;
@@ -82,4 +112,10 @@ public class BoulderDashController {
     private void clearStackOrder() {
         this.stackOrder = UserOrder.NON;
     }
+
+	@Override
+	public IOrderPerformer getOrderPeformer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
