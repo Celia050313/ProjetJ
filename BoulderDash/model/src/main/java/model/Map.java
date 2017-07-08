@@ -202,7 +202,7 @@ public class Map extends Observable implements IMap{
 	 * @return whether there's background or not
 	 */
 	public boolean isEmpty(int x, int y) {
-		if (getElementByPosition(x, y).getClass().equals(Background.class)) {
+		if (getElementByPosition(x, y).getClass().equals(null)) {
 			return true;
 		}
 		return false;
