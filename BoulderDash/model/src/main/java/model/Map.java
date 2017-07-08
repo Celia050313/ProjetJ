@@ -29,9 +29,7 @@ public class Map extends Observable implements IMap{
 	
 	//ID of the current level
 	private int idLevel;
-	
-	private int x;
-	private int y;
+
 
 	
 	/**
@@ -69,19 +67,21 @@ public class Map extends Observable implements IMap{
     private void loadLevel(int idLevel) throws SQLException {
         map = new IElement[this.getWidth()][this.getHeight()];
         MobileFactory.setMap(this);
-        char[][] consoleMap;
+        char[][] consoleMap= {};
+        String t;
         
     	for ( int i = 1; i <= getWidth(); i++ ){
 			for ( int j = 1; j <= getHeight(); j++){
 				
+				t=LevelsDAO.getElement(idLevel, i, j);
+				consoleMap[i][j]=t.charAt(0);
 				
-				consoleMap[i][j]=LevelsDAO.getElement(idLevel, i, j);
 				}
 		}
     	
-		for ( x = 0; x <= getWidth(); x++ ){
-			for ( y = 0; y <= getHeight(); y++){
-                this.setTheMap(ElementFactory.getFromFileSymbol(consoleMap[x][y]), x, y);
+		for (int x = 0; x <= getWidth(); x++ ){
+			for (int y = 0; y <= getHeight(); y++){
+                this.setElementPosition(ElementFactory.getFromFileSymbol(consoleMap[x][y]), x, y);
             	
             }
         }

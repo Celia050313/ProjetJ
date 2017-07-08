@@ -1,25 +1,29 @@
 package model;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import model.Element.Mobile.Hero;
 import model.Element.Mobile.IMobile;
 
 public class BoulderDashModel implements IBoulderDashModel{
 	
-	private IMap map;
+	private Map map;
 	
 	private IMobile hero;
+	
+	private int idLevel;
 
 	/**
-	 * instatiates the model
+	 * Instantiates the model
+	 * @throws SQLException 
 	 */
-	public BoulderDashModel(String filename, int heroStartX, int heroStartY) throws IOException {
-		this.setMap(new Map(filename));
-		this.setHero(new Hero(heroStartX, heroStartY, this.getMap()));
+	public BoulderDashModel(int idLevel) throws IOException, SQLException {
+		this.setMap(new Map(idLevel));
+		this.setHero(new Hero(this.getMap()));
 	}
     @Override
-    public final IMap getMap() {
+    public final Map getMap() {
         return this.map;
     }
 
@@ -28,7 +32,7 @@ public class BoulderDashModel implements IBoulderDashModel{
      *
      * @param map
      */
-    private void setMap(final IMap map) {
+    private void setMap(final Map map) {
         this.map = map;
         
     }

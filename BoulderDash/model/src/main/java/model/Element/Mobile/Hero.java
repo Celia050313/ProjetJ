@@ -14,7 +14,6 @@ public class Hero extends Mobile {
 	 * @param x
 	 * @param y
 	 * @param map
-	 * final int x, final int y, final IMap map
 	 */
 	public Hero(Map map) {
 		super(SPRITE, Permeability.PENETRABLE, map);

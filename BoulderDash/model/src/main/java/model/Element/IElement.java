@@ -11,5 +11,9 @@ public interface IElement  {
 
 
     Image getImage();
+
+	void setX(int x);
+
+	void setY(int y);
 	
 }

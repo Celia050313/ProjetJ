@@ -44,6 +44,20 @@ public class Element implements IElement{
         return this.getSprite().getImage();
     }
 
+
+	@Override
+	public void setX(int x) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void setY(int y) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	/**
 	 * Gets the status
 	 * @param alive
