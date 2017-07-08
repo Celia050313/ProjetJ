@@ -13,7 +13,7 @@ public abstract class LevelsDAO  extends AbstractDAO{
 
 	
 	/**
-	 * the stored procedures are stocked in order an easier access
+	 * the stored procedures are stocked in order to have an easier access
 	 */
     private static String getLevel1   = "{call (display_level_1)}";
     private static String getLevel2   = "{call (display_level_2)}";

@@ -1,7 +1,6 @@
 package view;
 
 
-import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
@@ -10,9 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import controller.BoulderDashController;
 import controller.IOrderPerformer;
 import controller.UserOrder;
+import model.IMap;
+import model.Element.Mobile.IMobile;
 /**
  * 
  * Display all we need for the game
@@ -25,10 +25,14 @@ public abstract class BoulderDashView extends JFrame implements KeyListener, IBo
 	private static final long serialVersionUID = 1L;
 	
 	private IOrderPerformer orderPerformer;
+	private int view;
+	private IMap map;
+	private IMobile hero;
 	
 
-	BoulderDashView() {
-		
+	public BoulderDashView(IMap map, final IMobile hero) throws IOException{
+		this.setMap(map);
+		this.setHero(hero);
 	}
 	
 	public void displayWindow(int x, int y) {
@@ -56,10 +60,10 @@ public abstract class BoulderDashView extends JFrame implements KeyListener, IBo
      * display the number of diamond needed to end the level
      * 
      */
-    	public void displayDiamondToCollect( Graphics g) {
+  /*  	public void displayDiamondToCollect( Graphics g) {
     		String diamondLeft = BoulderDashController.diamondLeft();
     		g.drawString(diamondLeft, 16, 16);
-    	}
+    	}*/
 	
 	private static UserOrder keyCodeToUserOrder(int keyCode) {
 		UserOrder userOrder;
@@ -123,5 +127,27 @@ public abstract class BoulderDashView extends JFrame implements KeyListener, IBo
     public final void setOrderPerformer(IOrderPerformer orderPerformer) {
         this.orderPerformer = orderPerformer;
     }
+        
+        private IMap getMap() {
+            return this.map;
+        }
+
+        private void setMap(IMap map) throws IOException {
+            this.map = map;
+            for (int x = 0; x < this.getMap().getWidth(); x++) {
+                for (int y = 0; y < this.getMap().getHeight(); y++) {
+                    this.getMap().getOnTheMap(x, y).getSprite().loadImage();
+                }
+            }
+            
+        }
+        
+        private IMobile getHero() {
+        	return this.hero;
+        }
+        
+        private void setHero(IMobile hero){
+        	this.hero=hero;
+        }
 	
 }

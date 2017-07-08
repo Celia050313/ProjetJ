@@ -4,18 +4,17 @@ import model.Element.Permeability;
 import model.Element.Sprite;
 
 public class Dirt extends MotionlessElement {
+	
+	//Sprite for the dirt
 	private static final Sprite SPRITE = new Sprite('D', "Dirt.png");
 	
+	//Constructor
 	Dirt() {
 		super(SPRITE, Permeability.PENETRABLE);
 	}
+
+	//Dig the dirt
+	public void dirtDug() {
 	
-
-
-	public void dug() {
-		// TODO - implement Dirt.dug
-		throw new UnsupportedOperationException();
 	}
-
-	
 }

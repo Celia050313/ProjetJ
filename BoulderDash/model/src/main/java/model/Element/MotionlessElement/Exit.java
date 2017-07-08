@@ -5,20 +5,28 @@ import model.Element.Sprite;
 
 public class Exit extends MotionlessElement {
 
-	private static final Sprite SPRITE = new Sprite('S', "Exit.png");
+	//Sprite for when the exit is hidden
+	private static final Sprite SPRITE = new Sprite('S', "Dirt.png");
 	
-	Exit() {
+	//Sprite once the exit is revealed
+	private static final Sprite realSPRITE = new Sprite ('S', "Exit.png");
+	
+	//constructor
+	public Exit() {
 		super(SPRITE, Permeability.PENETRABLE);
+		//realSPRITE.loadImage();
 	}
 	
 	/**
-	 * 
+	 * Change the status of the exit
 	 * @param DiamondNumber
 	 * @param DiamondCollected
 	 */
-	public void hide(int DiamondNumber, int DiamondCollected) {
-		// TODO - implement Exit.hide
-		throw new UnsupportedOperationException();
+	//Reveals the exit
+	public void reveal(int DiamondNumber, int DiamondCollected) {
+		if (DiamondNumber == DiamondCollected){
+			this.setSprite(realSPRITE);
+		}
 	}
 
 }

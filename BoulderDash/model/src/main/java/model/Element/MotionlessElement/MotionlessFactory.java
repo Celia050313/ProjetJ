@@ -3,7 +3,7 @@ package model.Element.MotionlessElement;
 public abstract class MotionlessFactory {
 	
 	/**
-	 * creates the different elements
+	 * creates the different motionless elements
 	 */
 	private static final Wall Wall = new Wall();
 	private static final Exit Exit = new Exit();
@@ -19,17 +19,26 @@ public abstract class MotionlessFactory {
 	 * return the elements created
 	 * @return
 	 */
-	public MotionlessElement createWall() {
+	public static MotionlessElement createWall() {
 		return Wall;
 	}
 	
-	public MotionlessElement createDirt() {
+	public static MotionlessElement createDirt() {
 		return Dirt;
 	}
 	
-	public MotionlessElement createExit() {
+	public static MotionlessElement createExit() {
 		return Exit;
 	}
-	
 
+	
+	   public static MotionlessElement getFromFileSymbol(final char fileSymbol) {
+	        for (final MotionlessElement motionlessElement : MotionlessElement) {
+	            if (motionlessElement.getSprite().getConsoleImage() == fileSymbol) {
+	                return motionlessElement;
+	            }
+	        }
+	        return null;
+	}
+	   
 }

@@ -11,7 +11,7 @@ public class BoulderDashController implements controller.IBoulderDashController,
 	private IBoulderDashView view;
 	private UserOrder stackOrder;
 	
-	BoulderDashController(IBoulderDashView view, IBoulderDashModel model) {
+	public BoulderDashController(IBoulderDashView view, IBoulderDashModel model) {
 		this.setView(view);
 		this.setModel(model);
 		this.clearStackOrder();

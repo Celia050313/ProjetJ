@@ -1,4 +1,4 @@
-package model.Element;
+/*package model.Element;
 
 import static org.junit.Assert.*;
 
@@ -33,7 +33,7 @@ public class ElementTest {
 	 * tests if getX sends back x
 	 */
 	
-	@Test
+/*	@Test
 	public void testGetX() {
 		Element.x =3;
 		assertEquals(Element.x,Element.getX());
@@ -43,7 +43,7 @@ public class ElementTest {
 	 * tests if setX affects the right number to x
 	 */
 
-	@Test
+/*	@Test
 	public void testSetX() {
 		int expectedX = 40;
 	    Element.setX(expectedX);
@@ -54,7 +54,7 @@ public class ElementTest {
 	 * tests if getY sends back y
 	 */
 	
-	@Test
+/*	@Test
 	public void testGetY() {
 		Element.y =32;
 		assertEquals(Element.y,Element.getY());
@@ -64,11 +64,11 @@ public class ElementTest {
 	 * tests if setY affects the right number to y
 	 */
 	
-	@Test
+/*	@Test
 	public void testSetY() {
 		int expectedY = 16;
 	    Element.setY(expectedY);
 	    assertEquals(expectedY, Element.getY());
 	}
 
-}
+}*/

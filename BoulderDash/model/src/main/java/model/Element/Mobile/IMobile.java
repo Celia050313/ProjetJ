@@ -1,5 +1,7 @@
 package model.Element.Mobile;
 
+import java.awt.Point;
+
 import model.Element.IElement;
 
 public interface IMobile extends IElement {
@@ -39,5 +41,20 @@ public interface IMobile extends IElement {
      * @return the y
      */
     int getY();
+    
+    /**
+     * Checks if the element is alive 
+     * @return
+     */
+    
+    Boolean isAlive();
+    
+    /**
+     * Checks if the element is killed
+     * @return
+     */
+    Boolean isKilled();
+    
+    Point getPosition();
 
 }

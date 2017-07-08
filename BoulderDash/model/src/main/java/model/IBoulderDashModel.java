@@ -1,22 +1,20 @@
 package model;
 
-import java.sql.SQLException;
+import model.Element.Mobile.IMobile;
 
-/**
- * <h1>The Interface IModel.</h1>
- * 
- * @author Jean-Aymeric DIET jadiet@cesi.fr
- * @version 1.0
- */
+
 public interface IBoulderDashModel {
 
 	/**
-	 * Gets the example by id.
-	 * @param aId the id
-	 * @return the example by id
-	 * @throws SQLException the SQL exception
+	 * gets the map
 	 */
-public Example getExampleById(int aId) throws java.sql.SQLException;
+IMap getMap();
+
+/**
+ * Gets the hero
+ */
+
+IMobile getHero();
 
 	/**
 	 * Gets the example by name.
@@ -30,5 +28,5 @@ public Example getExampleById(int aId) throws java.sql.SQLException;
 	 * @return the all examples
 	 * @throws SQLException the SQL exception
 	 */
-	public java.util.List<Example> getAllExamples() throws java.sql.SQLException;
+//	public java.util.List<Example> getAllExamples() throws java.sql.SQLException;
 }

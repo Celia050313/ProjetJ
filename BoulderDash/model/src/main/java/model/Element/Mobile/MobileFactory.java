@@ -1,30 +1,48 @@
 package model.Element.Mobile;
 
+import model.Map;
+
 public abstract class MobileFactory {
 	
-	private static final Hero Hero = new Hero();
-	private static final Rock Rock = new Rock();
-	private static final Diamond Diamond = new Diamond();
-	private static final Enemy Enemy = new Enemy();
+	private static Map map;
+
+	private static final Hero Hero = new Hero(map);
+	private static final Rock Rock = new Rock(map);
+	private static final Diamond Diamond = new Diamond( map);
+	private static final Enemy Enemy = new Enemy(map);
 	
 	/**
 	 * Factory for mobile elements
 	 */
 	private static Mobile[] Mobile = {Enemy, Rock, Hero, Diamond};
 	
-	public Mobile createEnemy() {
+	public static Mobile createEnemy() {
 		return Enemy;
 	}
 	
-	public Mobile createRock() {
+	public static Mobile createRock() {
 		return Rock;
 	}
 	
-	public Mobile createHero() {
+	public static Mobile createHero() {
 		return Hero;
 	}
 	
-	public Mobile createDiamond() {
+	public static Mobile createDiamond() {
 		return Diamond;
 	}
+	
+	public static void setMap (Map map) {
+		MobileFactory.map = map;
+	}
+	
+	   public static Mobile getFromFileSymbol(final char fileSymbol) {
+	        for (final Mobile mobile : Mobile) {
+	            if (mobile.getSprite().getConsoleImage() == fileSymbol) {
+	                return mobile;
+	            }
+	        }
+	        return null;
+	}
+
 }

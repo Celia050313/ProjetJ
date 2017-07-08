@@ -3,7 +3,6 @@ package model.Element;
 import java.awt.Image;
 
 
-
 public class Element implements IElement{
 
 	private Permeability permeability;

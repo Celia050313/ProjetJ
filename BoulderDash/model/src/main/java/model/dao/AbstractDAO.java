@@ -17,7 +17,7 @@ public abstract class AbstractDAO {
 	 * @return the result set
 	 */
 	protected static ResultSet executeQuery(final String aQuery) {
-		throw new UnsupportedOperationException();
+		return null;
 	}
 
 	/**
@@ -26,7 +26,7 @@ public abstract class AbstractDAO {
 	 * @return the int
 	 */
 	protected static int executeUpdate(final String aQuery) {
-		throw new UnsupportedOperationException();
+		return 0;
 	}
 
 	/**
@@ -35,6 +35,6 @@ public abstract class AbstractDAO {
 	 * @return the callable statement
 	 */
 	protected static CallableStatement prepareCall(final String aQuery) {
-		throw new UnsupportedOperationException();
+		return null;
 	}
 }
