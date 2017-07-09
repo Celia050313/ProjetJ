@@ -5,15 +5,15 @@ import java.util.Observable;
 import model.Element.IElement;
 
 public interface IMap {
-	
-	int getWidth();
-	
-	int getHeight();
-	
+
+	/**
+	 * Gets the map
+	 * @return
+	 */
 	IElement[][] getTheMap();
 	
     /**
-     * Sets that mobile has changed.
+     * Sets that the map has changed.
      */
     void setMapHasChanged();
 
@@ -23,6 +23,12 @@ public interface IMap {
      */
     Observable getObservable();
 
+    /**
+     * Gets the element to the given position
+     * @param x
+     * @param y
+     * @return
+     */
 	IElement getElementByPosition(int x, int y);
 	
 }

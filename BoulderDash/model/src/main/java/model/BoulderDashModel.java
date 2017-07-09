@@ -22,6 +22,10 @@ public class BoulderDashModel implements IBoulderDashModel{
 		this.setMap(new Map(idLevel));
 		this.setHero(new Hero(this.getMap()));
 	}
+	
+	/**
+	 * Gets the map
+	 */
     @Override
     public final Map getMap() {
         return this.map;
@@ -37,6 +41,10 @@ public class BoulderDashModel implements IBoulderDashModel{
         
     }
     
+    
+    /**
+     * Gets the hero
+     */
     @Override
     public IMobile getHero(){
         return this.hero;

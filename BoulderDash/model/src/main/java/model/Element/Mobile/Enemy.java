@@ -20,9 +20,16 @@ public class Enemy extends Mobile {
 		this.alive=true;
 	}
 	
+	/**
+	 * Checks if the enemy is alive
+	 */
+	@Override
+	public Boolean isAlive(){
+		return this.alive;
+	}
 	
 	/**
-	 * Change the status of the enemy
+	 * Changes the status of the enemy
 	 */
 	@Override
 	protected final void die() {

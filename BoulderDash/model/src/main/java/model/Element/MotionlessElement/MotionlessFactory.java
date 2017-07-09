@@ -48,7 +48,7 @@ public abstract class MotionlessFactory {
 	}
 
 	/**
-	 * Gets the MotionlessElement correspond to the file symbol
+	 * Gets the MotionlessElement corresponding to the file symbol
 	 * @param fileSymbol
 	 * @return
 	 */

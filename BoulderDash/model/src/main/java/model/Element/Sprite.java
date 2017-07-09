@@ -8,12 +8,23 @@ import javax.imageio.ImageIO;
 
 public class Sprite {
 	
+	/**
+	 * The image
+	 */
 	private Image image;
+	
+	/**
+	 * The image name
+	 */
 	private String imageName;
+	
+	/**
+	 * The console image
+	 */
 	private char consoleImage;
 	
 	/**
-	 * Instantiates a sprite and affects the right character and image name to the right parameters
+	 * Instantiates a new sprite
 	 * @param character
 	 * @param imageName
 	 */
@@ -26,7 +37,6 @@ public class Sprite {
      * Loads the image
      * @throws IOException
      */
-    
     public final void loadImage() throws IOException {
         this.setImage(ImageIO.read(new File("images/" + this.getImageName())));
     }

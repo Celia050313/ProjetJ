@@ -33,7 +33,7 @@ public class Map extends Observable implements IMap{
 
 	
 	/**
-	 * instantiate the map with the file
+	 * instantiate a new map
 	 */
 	public Map(int idlevel) throws SQLException {
         super();
@@ -41,24 +41,6 @@ public class Map extends Observable implements IMap{
         this.loadLevel(getIDLevel());
 	}
 	
-	/**
-	 * double loop in order to retrieve every cell of the table, which are containing the characters of our level
-	 * @param idLevel
-	 * @param dimension
-	 * @throws SQLException
-	 */
-	
-	/*public void Display_Element (int idLevel, int dimension) throws SQLException {
-		
-		for ( x = 1; x <= dimension; x++ )
-		{
-			for ( y = 1; y <= dimension; y++)
-			{
-				System.out.println(LevelsDAO.getElement(idLevel, x, y));
-								
-			}
-		}
-	}*/
 	/**
 	 * Gets all the elements of the map stored in the database
 	 * @param idLevel
@@ -107,7 +89,7 @@ public class Map extends Observable implements IMap{
     }
     
 	/**
-	 * getter for the number of diamonds to collect to finish the level
+	 * Gets the number of diamonds to collect to finish the level
 	 * @return
 	 */
 	public static int getDiamondNumber() {
@@ -115,7 +97,7 @@ public class Map extends Observable implements IMap{
 	}
 
 	/**
-	 * setter for the number of diamonds to collect to finish the level
+	 * Sets the number of diamonds to collect to finish the level
 	 * @param DiamondNumber
 	 */
 	public void setDiamondNumber(int DiamondNumber) {
@@ -123,7 +105,7 @@ public class Map extends Observable implements IMap{
 	}
 
 	/**
-	 * getter for the number of diamonds already collected
+	 * Gets the number of diamonds already collected
 	 * @return
 	 */
 	public static int getDiamondCollected() {
@@ -131,48 +113,66 @@ public class Map extends Observable implements IMap{
 	}
 
 	/**
-	 * setter for the number of diamonds already collected
+	 * Sets the number of diamonds already collected
 	 * @param DiamondCollected
 	 */
-	public void setDiamondCollected(int DiamondCollected) {
+	public static void setDiamondCollected(int DiamondCollected) {
 		Map.DiamondCollected = DiamondCollected;
 	}
 	
-    @Override
+	/**
+	 * Gets the width
+	 * @return
+	 */
     public final int getWidth() {
         return this.width;
     }
 
- 
+    /**
+     * Sets the width
+     * @param width
+     */
     private void setWidth(final int width) {
         this.width = width;
     }
 
- 
-    @Override
+    /**
+     * Gets the height
+     * @return
+     */
     public final int getHeight() {
         return this.height;
     }
 
+    /**
+     * Sets the height
+     * @param height
+     */
     private void setHeight(final int height) {
         this.height = height;
     }
     
 
+    /**
+     * Gets the map
+     */
     @Override
     public IElement[][] getTheMap() {
         return this.map;
     }
 
-
+    /**
+     * Sets the map
+     * @param map
+     */
     private void setTheMap(IElement[][] map) {
         this.map=map;
     }
     
     /**
-	 * Sets the given element at the given coordinates on the map
+	 * Sets the given element at the given location on the map
 	 * 
-	 * @param element the given element
+	 * @param element
 	 * @param x the x coordinate
 	 * @param y the y coordinate
 	 */
@@ -183,23 +183,41 @@ public class Map extends Observable implements IMap{
 	}
 
 	/**
-	 * Returns the element at the given location on the map
+	 * Gets the element at the given location on the map
 	 * 
 	 * @param x the x coordinate
 	 * @param y the y coordinate
-	 * @return the element at coordinate x,y on the map
+	 * @return the element at the given coordinates
 	 */
 	@Override
 	public IElement getElementByPosition(int x, int y) {
 		return map[x][y];
 	}
+	
+	/**
+	 * Notifies the observers
+	 */
+	
+    @Override
+    public final void setMapHasChanged() {
+        this.setChanged();
+        this.notifyObservers();
+    }
+    
+    /**
+     * Sets this class as observable
+     */
+    @Override
+    public Observable getObservable() {
+        return this;
+    }
     
 	/**
 	 * Checks if the given spot is empty
 	 * 
-	 * @param x the x coordinate
-	 * @param y the y coordinate
-	 * @return whether there's background or not
+	 * @param x 
+	 * @param y 
+	 * @return 
 	 */
 	public boolean isEmpty(int x, int y) {
 		if (getElementByPosition(x, y).getClass().equals(null)) {
@@ -211,7 +229,7 @@ public class Map extends Observable implements IMap{
 	/**
 	 * movements of the enemies, follow the right wall
 	 * 
-	 * @param element, the enemy to move
+	 * @param element, an enemy
 	 */
 	public void moveEnemy(Mobile element) {
 		int x = 0;
@@ -237,19 +255,6 @@ public class Map extends Observable implements IMap{
 	}
     
 	
-	/**
-	 * notifies the observers
-	 */
-	
-    @Override
-    public final void setMapHasChanged() {
-        this.setChanged();
-        this.notifyObservers();
-    }
-    
-    @Override
-    public Observable getObservable() {
-        return this;
-    }
+
     
 }
