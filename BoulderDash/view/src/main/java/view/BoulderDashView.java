@@ -19,20 +19,33 @@ import model.Element.Mobile.IMobile;
  *
  */
 
-public abstract class BoulderDashView extends JFrame implements KeyListener, IBoulderDashView {
+public abstract class BoulderDashView extends JFrame implements Runnable, KeyListener, IBoulderDashView {
 
 
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * The order performer
+	 */
 	private IOrderPerformer orderPerformer;
-	private int view;
+	
+	//private int view;
+	
+	/**
+	 * The map
+	 */
 	private IMap map;
+	
+	/**
+	 * The hero
+	 */
 	private IMobile hero;
 	
 
 	public BoulderDashView(IMap map, final IMobile hero) throws IOException{
 		this.setMap(map);
 		this.setHero(hero);
+		this.getHero().getSprite().loadImage();
 	}
 	
 	public void displayWindow(int x, int y) {
@@ -51,6 +64,9 @@ public abstract class BoulderDashView extends JFrame implements KeyListener, IBo
         this.setVisible(true); 
 	}
 	
+	/**
+	 * Display message on the screen
+	 */
     @Override
     public final void displayMessage(final String message) {
         JOptionPane.showMessageDialog(null, message);
@@ -65,6 +81,11 @@ public abstract class BoulderDashView extends JFrame implements KeyListener, IBo
     		g.drawString(diamondLeft, 16, 16);
     	}*/
 	
+    /**
+     * Key control
+     * @param keyCode
+     * @return
+     */
 	private static UserOrder keyCodeToUserOrder(int keyCode) {
 		UserOrder userOrder;
 		switch (keyCode) {
@@ -81,18 +102,21 @@ public abstract class BoulderDashView extends JFrame implements KeyListener, IBo
 				userOrder = UserOrder.RIGHT;
 				break;
 			default :
-				userOrder = UserOrder.NON;
+				userOrder = UserOrder.NONE;
 				break;
 		}
 		return userOrder;
 	}
 	
-	 @Override
+		@Override
 	    public void keyTyped(final KeyEvent keyEvent) {
 	        // Not used
 	    }
 
-	    
+		
+	    /**
+	     * gets the order from the key pressed
+	     */
 	    @Override
 	    public final void keyPressed(final KeyEvent keyEvent) {
 	        try {
@@ -108,46 +132,61 @@ public abstract class BoulderDashView extends JFrame implements KeyListener, IBo
 	        // Not used
 	    }
 	
-	/**
-	 * Display the sprite on the window
-	 * @param x
-	 * @param y
-	 * @param SPRITE
-	 */
-	public void displayMap(int x, int y, int SPRITE) {
-		
-		throw new UnsupportedOperationException();
-	}
 
-    private IOrderPerformer getOrderPerformer() {
-        return this.orderPerformer;
-    }
-
-   
-    public final void setOrderPerformer(IOrderPerformer orderPerformer) {
-        this.orderPerformer = orderPerformer;
-    }
-        
+ 
+        /**
+         * Gets the map
+         * @return
+         */
         private IMap getMap() {
             return this.map;
         }
 
-        private void setMap(IMap map) throws IOException {
+        /**
+         * Sets the map
+         * @param map
+         * @throws IOException
+         */
+        private void setMap(final IMap map) throws IOException {
             this.map = map;
             for (int x = 0; x < this.getMap().getWidth(); x++) {
                 for (int y = 0; y < this.getMap().getHeight(); y++) {
-                    this.getMap().getOnTheMap(x, y).getSprite().loadImage();
+                    this.getMap().getElementByPosition(x, y).getSprite().loadImage();
                 }
             }
             
         }
         
+        /**
+         * Gets the hero
+         * @return
+         */
         private IMobile getHero() {
         	return this.hero;
         }
         
+        /**
+         * Sets the hero
+         * @param hero
+         */
         private void setHero(IMobile hero){
         	this.hero=hero;
+        }
+        
+        /**
+         * Gets the order performer
+         * @return
+         */
+        private IOrderPerformer getOrderPerformer() {
+            return this.orderPerformer;
+        }
+
+       /**
+        * Sets the order performer
+        * @param orderPerformer
+        */
+        public final void setOrderPerformer(IOrderPerformer orderPerformer) {
+            this.orderPerformer = orderPerformer;
         }
 	
 }

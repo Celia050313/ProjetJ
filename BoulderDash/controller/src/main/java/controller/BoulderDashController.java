@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.IOException;
+
 import model.IBoulderDashModel;
 import model.Map;
 import view.IBoulderDashView;
@@ -7,30 +9,66 @@ import view.IBoulderDashView;
 
 public class BoulderDashController implements controller.IBoulderDashController, IOrderPerformer{
 	
+	/**
+	 * The model
+	 */
 	private IBoulderDashModel model;
+	
+	/**
+	 * The view
+	 */
 	private IBoulderDashView view;
+	
+	/**
+	 * The stack or order
+	 */
 	private UserOrder stackOrder;
 	
-	public BoulderDashController(IBoulderDashView view, IBoulderDashModel model) {
+	/**
+	 * Instantiates a new controller
+	 * @param view
+	 * @param model
+	 */
+	public BoulderDashController(final IBoulderDashView view, final IBoulderDashModel model) {
 		this.setView(view);
 		this.setModel(model);
 		this.clearStackOrder();
 		
 	}
+	
 	/**
 	 * Starts the game
 	 */
-
 	@Override
 	public void play() throws InterruptedException {
 		System.out.println("Hello gamer");
+		while (this.getModel().getHero().isAlive()) {
+           // Thread.sleep(speed);
+            switch (this.getStackOrder()) {
+                case RIGHT:
+                    this.getModel().getHero().moveRight();
+                    break;
+                case LEFT:
+                    this.getModel().getHero().moveLeft();
+                    break;
+                case DOWN :
+                	this.getModel().getHero().moveDown();
+                	break;
+                case UP:
+                	this.getModel().getHero().moveUp();
+                case NONE:
+                default:
+                    this.getModel().getHero().doNothing();
+                    break;
+            }
+            this.clearStackOrder();
+            /*if (this.getModel().getHero().isAlive()) {
+                this.getModel().getMyVehicle().moveDown();
+            }
+            this.getView().followMyVehicle();*/
+        }
+        this.getView().displayMessage("GAME OVER");
 	}
-		
-	
-	@Override
-	   public final void orderPerform(final UserOrder userOrder) {
-	        this.setStackOrder(userOrder);
-	    }
 
 	
 	public static String diamondLeft() {
@@ -38,6 +76,12 @@ public class BoulderDashController implements controller.IBoulderDashController,
 		String diamondLeft = Integer.toString(diamondL);
 		return diamondLeft;
 	}
+	
+	
+    @Override
+    public final void orderPerform(final UserOrder userOrder) throws IOException {
+        this.setStackOrder(userOrder);
+    }
 	
 	/**
 	 * gets the view
@@ -92,9 +136,12 @@ public class BoulderDashController implements controller.IBoulderDashController,
      * Clear stack order.
      */
     private void clearStackOrder() {
-        this.stackOrder = UserOrder.NON;
+        this.stackOrder = UserOrder.NONE;
     }
 
+    /**
+     * Gets the order performer
+     */
 	@Override
 	public IOrderPerformer getOrderPeformer() {
 		// TODO Auto-generated method stub

@@ -3,9 +3,16 @@ package controller;
 
 public interface IBoulderDashController {
 
-	   public void play() throws InterruptedException;
+	/**
+	 * Play. Starts the game
+	 * @throws InterruptedException
+	 */
+	public void play() throws InterruptedException;
 
-	   
-	    IOrderPerformer getOrderPeformer();
+	/**
+	 * Gets the order performed 
+	 * @return
+	 */
+	IOrderPerformer getOrderPeformer();
 
 }

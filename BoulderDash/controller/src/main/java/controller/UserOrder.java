@@ -26,6 +26,6 @@ public enum UserOrder {
 	/**
 	 * Nothing
 	 */
-	NON
+	NONE
 
 }
