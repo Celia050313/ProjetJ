@@ -8,11 +8,13 @@ import model.Element.Sprite;
  */
 public class Wall extends MotionlessElement {
 
-	//Sprite for the wall
+	/**
+	 * Sprite for a wall
+	 */
 	private static final Sprite SPRITE = new Sprite('W', "Wall.png");
 
     /**
-     * Constructor
+     * Instantiates a new wall
      */
 	Wall() {
 		super(SPRITE, Permeability.BLOCKING);

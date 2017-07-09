@@ -5,13 +5,19 @@ import model.Element.Sprite;
 
 public class Exit extends MotionlessElement {
 
-	//Sprite for when the exit is hidden
+	/**
+	 * Sprite for when the exit is hidden
+	 */
 	private static final Sprite SPRITE = new Sprite('S', "Dirt.png");
 	
-	//Sprite once the exit is revealed
+	/**
+	 * Sprite once the exit is revealed
+	 */
 	private static final Sprite realSPRITE = new Sprite ('S', "Exit.png");
 	
-	//constructor
+	/**
+	 * Instantiates a new exit
+	 */
 	public Exit() {
 		super(SPRITE, Permeability.PENETRABLE);
 		//realSPRITE.loadImage();

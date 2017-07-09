@@ -6,6 +6,9 @@ import model.Element.Sprite;
 
 public class Hero extends Mobile {
 	
+	/**
+	 * Sprite for the hero
+	 */
 	private static final Sprite SPRITE = new Sprite('H', "Hero.png");
 
 	
@@ -20,12 +23,18 @@ public class Hero extends Mobile {
 		this.alive=true;
 	}
 	
+	/**
+	 * Check if the hero is alive
+	 */
 	   @Override
 	    public Boolean isAlive() {
 	        return this.alive;
 	    }
 	  
-	
+	   /*
+	    * Change the status of the hero
+	    * @see model.Element.Mobile.Mobile#die()
+	    */
 	    @Override
 	    protected final void die() {
 	        super.die();

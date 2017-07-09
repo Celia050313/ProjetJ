@@ -6,8 +6,10 @@ import model.Element.Sprite;
 
 abstract class MotionlessElement extends Element {
 
-	/*
-	 * Instantiates a motionless element
+	/**
+	 * Instantiates a new motionless element
+	 * @param sprite
+	 * @param permeability
 	 */
 	public MotionlessElement(Sprite sprite, Permeability permeability) {
 		super(sprite, permeability);
