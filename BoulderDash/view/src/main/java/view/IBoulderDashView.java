@@ -1,10 +1,5 @@
 package view;
 
-/**
- * <h1>The Interface IBoulderDashView.</h1>
- * 
- * 
- */
 public interface IBoulderDashView {
 
 	/**

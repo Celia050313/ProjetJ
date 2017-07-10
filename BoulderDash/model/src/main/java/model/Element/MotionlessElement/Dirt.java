@@ -17,7 +17,7 @@ public class Dirt extends MotionlessElement {
 		super(SPRITE, Permeability.PENETRABLE);
 	}
 
-	//Dig the dirt
+	//Digs the dirt
 	public void dirtDug() {
 	
 	}

@@ -1,6 +1,6 @@
 package model.Element.Mobile;
 
-import model.Map;
+import model.IMap;
 import model.Element.Permeability;
 import model.Element.Sprite;
 
@@ -15,7 +15,7 @@ public class Diamond extends Mobile {
 	 * Instantiates a new diamond
 	 * @param map
 	 */
-	Diamond(Map map) {
+	Diamond(IMap map) {
 		super(SPRITE, Permeability.PENETRABLE, map);
 	}
 
@@ -31,9 +31,9 @@ public class Diamond extends Mobile {
 	 * A diamond is collected
 	 * @param nbDiamond
 	 */
-	public void collected(int nbDiamond) {
+/*	public void collected(int nbDiamond) {
 		nbDiamond = nbDiamond ++;
-		Map.setDiamondCollected(nbDiamond);
-	}
+		setDiamondCollected(nbDiamond);
+	}*/
 	
 }

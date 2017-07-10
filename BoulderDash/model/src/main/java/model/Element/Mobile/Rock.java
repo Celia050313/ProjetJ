@@ -1,6 +1,6 @@
 package model.Element.Mobile;
 
-import model.Map;
+import model.IMap;
 import model.Element.Permeability;
 import model.Element.Sprite;
 
@@ -15,7 +15,7 @@ public class Rock extends Mobile {
 	 * Instantiates a new rock
 	 * @param map
 	 */
-	Rock(Map map) {
+	Rock(IMap map) {
 		super(SPRITE, Permeability.BLOCKING, map);
 	}
 }

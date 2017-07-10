@@ -1,6 +1,6 @@
 package model.Element.Mobile;
 
-import model.Map;
+import model.IMap;
 import model.Element.Permeability;
 import model.Element.Sprite;
 
@@ -18,14 +18,14 @@ public class Hero extends Mobile {
 	 * @param y
 	 * @param map
 	 */
-	public Hero(Map map) {
+	public Hero(IMap map) {
 		super(SPRITE, Permeability.PENETRABLE, map);
 		this.alive=true;
 	}
 	
-	/**
-	 * Check if the hero is alive
-	 */
+		/**
+		 * Check if the hero is alive
+		 */
 	   @Override
 	    public Boolean isAlive() {
 	        return this.alive;

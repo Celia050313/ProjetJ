@@ -1,10 +1,10 @@
 package model.Element.Mobile;
 
-import model.Map;
+import model.IMap;
 
 public abstract class MobileFactory {
 	
-	private static Map map;
+	private static IMap map;
 
 	private static final Hero Hero = new Hero(map);
 	private static final Rock Rock = new Rock(map);
@@ -32,7 +32,7 @@ public abstract class MobileFactory {
 		return Diamond;
 	}
 	
-	public static void setMap (Map map) {
+	public static void setMap (IMap map) {
 		MobileFactory.map = map;
 	}
 	

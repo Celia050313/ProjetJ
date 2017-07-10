@@ -8,11 +8,25 @@ import model.Element.Mobile.IMobile;
 
 public class BoulderDashModel implements IBoulderDashModel{
 	
-	private Map map;
+	/**
+	 * The Map
+	 */
+	private IMap map;
 	
+	/**
+	 * The Hero
+	 */
 	private IMobile hero;
 	
+	/**
+	 * The ID of the level
+	 */
 	private int idLevel;
+	
+	/**
+	 * Diamonds left to collect
+	 */
+	private int DiamondToCollect;
 
 	/**
 	 * Instantiates the model
@@ -27,7 +41,7 @@ public class BoulderDashModel implements IBoulderDashModel{
 	 * Gets the map
 	 */
     @Override
-    public final Map getMap() {
+    public final IMap getMap() {
         return this.map;
     }
 
@@ -36,7 +50,7 @@ public class BoulderDashModel implements IBoulderDashModel{
      *
      * @param map
      */
-    private void setMap(final Map map) {
+    private void setMap(final IMap map) {
         this.map = map;
         
     }
@@ -58,4 +72,9 @@ public class BoulderDashModel implements IBoulderDashModel{
     private void setHero(final IMobile hero) {
         this.hero = hero;
     }
+
+	@Override
+	public int getDiamondToCollect() {
+		return this.DiamondToCollect;
+	}
 }

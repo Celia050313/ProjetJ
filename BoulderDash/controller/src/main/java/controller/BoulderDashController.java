@@ -3,11 +3,10 @@ package controller;
 import java.io.IOException;
 
 import model.IBoulderDashModel;
-import model.Map;
 import view.IBoulderDashView;
 
 
-public class BoulderDashController implements controller.IBoulderDashController, IOrderPerformer{
+public class BoulderDashController implements IBoulderDashController, IOrderPerformer{
 	
 	/**
 	 * The model
@@ -42,7 +41,7 @@ public class BoulderDashController implements controller.IBoulderDashController,
 	@Override
 	public void play() throws InterruptedException {
 		System.out.println("Hello gamer");
-		while (this.getModel().getHero().isAlive()) {
+		while (this.getModel().getHero().isAlive() && this.getModel().getDiamondToCollect() != 0) {
            // Thread.sleep(speed);
             switch (this.getStackOrder()) {
                 case RIGHT:
@@ -68,13 +67,6 @@ public class BoulderDashController implements controller.IBoulderDashController,
             this.getView().followMyVehicle();*/
         }
         this.getView().displayMessage("GAME OVER");
-	}
-
-	
-	public static String diamondLeft() {
-		int diamondL = Map.getDiamondNumber() - Map.getDiamondCollected();
-		String diamondLeft = Integer.toString(diamondL);
-		return diamondLeft;
 	}
 	
 	
