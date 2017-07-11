@@ -2,9 +2,10 @@ package model.Element.Mobile;
 
 import java.awt.Point;
 
+import fr.exia.showboard.IPawn;
 import model.Element.IElement;
 
-public interface IMobile extends IElement {
+public interface IMobile extends IElement, IPawn {
     /**
      * Move up
      */
@@ -29,32 +30,19 @@ public interface IMobile extends IElement {
      * Do nothing.
      */
     void doNothing();
-
-    /**
-     * Gets the x.
-     * @return the x
-     */
-    int getX();
-
-    /**
-     * Gets the y.
-     * @return the y
-     */
-    int getY();
-    
+	
     /**
      * Checks if the element is alive 
      * @return
      */
-    
     Boolean isAlive();
+   
     
     /**
-     * Checks if the element is killed
+     * Gets the position
      * @return
      */
-    Boolean isKilled();
-    
+    @Override
     Point getPosition();
-
+    
 }

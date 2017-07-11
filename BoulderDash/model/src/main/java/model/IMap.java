@@ -7,10 +7,24 @@ import model.Element.IElement;
 public interface IMap {
 
 	/**
-	 * Gets the map
+	 * Gets the width
 	 * @return
 	 */
-	IElement[][] getTheMap();
+	int getWidth();
+	
+	/**
+	 * Gets the height
+	 * @return
+	 */
+	int getHeight();
+	
+    /**
+     * Gets the element to the given position
+     * @param x
+     * @param y
+     * @return
+     */
+	IElement getElementByPosition(int x, int y);
 	
     /**
      * Sets that the map has changed.
@@ -23,12 +37,6 @@ public interface IMap {
      */
     Observable getObservable();
 
-    /**
-     * Gets the element to the given position
-     * @param x
-     * @param y
-     * @return
-     */
-	IElement getElementByPosition(int x, int y);
+
 	
 }

@@ -4,39 +4,52 @@ package model;
 import java.sql.SQLException;
 import java.util.Observable;
 
+import model.Element.Element;
 import model.Element.ElementFactory;
 import model.Element.IElement;
+import model.Element.Mobile.Diamond;
+import model.Element.Mobile.Enemy;
 import model.Element.Mobile.Mobile;
 import model.Element.Mobile.MobileFactory;
+import model.Element.Mobile.Rock;
 import model.dao.LevelsDAO;
 
 public class Map extends Observable implements IMap{
 
-	//width of the map
+	/**
+	 * width of the map
+	 */
 	private int width = 16;
 	
-	//height of the map
+	/**
+	 * height of the map
+	 */
 	private int height = 16;
 	
-	//Diamond to collect
-	private static int DiamondNumber;
+	//Diamond left to collect
+	private int DiamondNumber;
 	
 	//Diamond already collected
-	private static int DiamondCollected;
+	private int DiamondCollected;
 	
-	//Double array that constitutes the map
+	/**
+	 * Double array that constitutes the map
+	 */
 	private IElement[][] map;
 	
-	//ID of the current level
+	/**
+	 * ID of the level
+	 */
 	private int idLevel;
 
 
 	
 	/**
-	 * instantiate a new map
+	 * Instantiates a new map
+	 * @param idlevel
+	 * @throws SQLException
 	 */
 	public Map(int idlevel) throws SQLException {
-        super();
         this.setIDLevel(idlevel);
         this.loadLevel(getIDLevel());
 	}
@@ -70,6 +83,41 @@ public class Map extends Observable implements IMap{
         
     }
     
+	/**
+	 * Gets the width
+	 * @return
+	 */
+	@Override
+    public final int getWidth() {
+        return this.width;
+    }
+
+    /**
+     * Sets the width
+     * @param width
+     */
+    private void setWidth(final int width) {
+        this.width = width;
+    }
+
+    /**
+     * Gets the height
+     * @return
+     */
+    @Override
+    public final int getHeight() {
+        return this.height;
+    }
+
+    
+    /**
+     * Sets the height
+     * @param height
+     */
+    private void setHeight(final int height) {
+        this.height = height;
+    }
+    
     /*
      * gets the ID of the level
      * 
@@ -87,76 +135,11 @@ public class Map extends Observable implements IMap{
     public void setIDLevel(int idLevel){
     	this.idLevel=idLevel;
     }
-    
-	/**
-	 * Gets the number of diamonds to collect to finish the level
-	 * @return
-	 */
-	public static int getDiamondNumber() {
-		return DiamondNumber;
-	}
-
-	/**
-	 * Sets the number of diamonds to collect to finish the level
-	 * @param DiamondNumber
-	 */
-	public void setDiamondNumber(int DiamondNumber) {
-		Map.DiamondNumber = DiamondNumber;
-	}
-
-	/**
-	 * Gets the number of diamonds already collected
-	 * @return
-	 */
-	public static int getDiamondCollected() {
-		return DiamondCollected;
-	}
-
-	/**
-	 * Sets the number of diamonds already collected
-	 * @param DiamondCollected
-	 */
-	public static void setDiamondCollected(int DiamondCollected) {
-		Map.DiamondCollected = DiamondCollected;
-	}
-	
-	/**
-	 * Gets the width
-	 * @return
-	 */
-    public final int getWidth() {
-        return this.width;
-    }
-
-    /**
-     * Sets the width
-     * @param width
-     */
-    private void setWidth(final int width) {
-        this.width = width;
-    }
-
-    /**
-     * Gets the height
-     * @return
-     */
-    public final int getHeight() {
-        return this.height;
-    }
-
-    /**
-     * Sets the height
-     * @param height
-     */
-    private void setHeight(final int height) {
-        this.height = height;
-    }
-    
+ 
 
     /**
      * Gets the map
      */
-    @Override
     public IElement[][] getTheMap() {
         return this.map;
     }
@@ -168,6 +151,20 @@ public class Map extends Observable implements IMap{
     private void setTheMap(IElement[][] map) {
         this.map=map;
     }
+    
+    
+	/**
+	 * Gets the element at the given location on the map
+	 * 
+	 * @param x the x coordinate
+	 * @param y the y coordinate
+	 * @return the element at the given coordinates
+	 */
+	@Override
+	public IElement getElementByPosition(int x, int y) {
+		return map[x][y];
+	}
+	
     
     /**
 	 * Sets the given element at the given location on the map
@@ -182,20 +179,9 @@ public class Map extends Observable implements IMap{
 		this.map[x][y] = element;
 	}
 
+
 	/**
-	 * Gets the element at the given location on the map
-	 * 
-	 * @param x the x coordinate
-	 * @param y the y coordinate
-	 * @return the element at the given coordinates
-	 */
-	@Override
-	public IElement getElementByPosition(int x, int y) {
-		return map[x][y];
-	}
-	
-	/**
-	 * Notifies the observers
+	 * Notifies the observers that the map has changed
 	 */
 	
     @Override
@@ -227,7 +213,7 @@ public class Map extends Observable implements IMap{
 	}
 	
 	/**
-	 * movements of the enemies, follow the right wall
+	 * Movements of the enemies
 	 * 
 	 * @param element, an enemy
 	 */
@@ -254,7 +240,90 @@ public class Map extends Observable implements IMap{
 		}
 	}
     
+	/**
+	 * Starts the movements of the enemies on the map
+	 */
+	public void startMoveEnemy() {
+		IElement[][] elem = getTheMap();
+		for (int j = 0; j < elem.length; j++) {
+			for (int i = 0; i < elem[i].length; i++) {
+				if (getElementByPosition(i, j).getClass().equals(Enemy.class)) {
+					moveEnemy((Mobile) getElementByPosition(i, j));
+				}
+			}
+		}
+	}
 	
+	/**
+	 * Applies the game's gravity on the rocks and diamonds
+	 */
+	public void applyGravity(){
+		for (int y = 0; y < getHeight(); y++) {
+			for (int x = 0; x < getWidth(); x++) {
+				if (map[x][y].getClass().equals(Rock.class) || map[x][y].getClass().equals(Diamond.class)) {
 
-    
+					Mobile element = (Mobile.class.cast((map[x][y])));
+					
+					
+					Element e = (Element) map[element.getX()][element.getY() + 1];
+					Class buffer =map[element.getX()][element.getY() + 1].getClass();
+					Class buffer2 = null;
+					
+					
+					if (map[element.getX()][element.getY() - 1].getClass().equals(null)) {
+						element.setY(element.getY() - 1);
+						map[x][y] = null;
+						map[x][y - 1] = element;
+						
+					} else if ((map[element.getX()][element.getY() - 1].getClass().equals(Rock.class)
+							|| map[element.getX()][element.getY() - 1].getClass().equals(Diamond.class))
+							&& map[element.getX() + 1][element.getY()].getClass().equals(null)
+							&& map[element.getX() - 1][element.getY()].getClass().equals(null)) {
+						int rand = (int) (Math.random() * 10);
+						element.setY(element.getY() - 1);
+						if (rand == 0) {
+							element.setX(element.getX() + 1);
+							map[x + 1][y - 1] = element;
+						} else {
+							element.setX(element.getX() - 1);
+							map[x - 1][y - 1] = element;
+						}
+						map[x][y] = null;
+
+					} else if ((map[element.getX()][element.getY() - 1].getClass().equals(Rock.class)
+							|| map[element.getX()][element.getY() - 1].getClass().equals(Diamond.class))
+							&& map[element.getX() - 1][element.getY()].getClass().equals(null)) {
+						element.setY(element.getY() - 1);
+						element.setX(element.getX() - 1);
+						map[x][y] = null;
+						map[x - 1][y - 1] = element;
+					} else if ((map[element.getX()][element.getY() - 1].getClass().equals(Rock.class)
+							|| map[element.getX()][element.getY() - 1].getClass().equals(Diamond.class))
+							&& map[element.getX() + 1][element.getY()].getClass().equals(null)) {
+						element.setY(element.getY() - 1);
+						element.setX(element.getX() + 1);
+						map[x][y] = null;
+						map[x + 1][y - 1] = element;
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * Gets the number of diamonds to collect to finish the level
+	 * @return
+	 */
+	public int getDiamondNumber() {
+		return DiamondNumber;
+	}
+
+	/**
+	 * Sets the number of diamonds to collect to finish the level
+	 * @param DiamondNumber
+	 */
+	public void setDiamondNumber(int DiamondNumber) {
+		this.DiamondNumber = DiamondNumber;
+	}
+     
 }

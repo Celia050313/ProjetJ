@@ -1,20 +1,23 @@
 package model.Element.Mobile;
 
-import java.awt.Point;
-
 import model.IMap;
-import model.Map;
 import model.Element.Element;
 import model.Element.Permeability;
 import model.Element.Sprite;
 
 public class Mobile extends Element implements IMobile{
 	
-	private Point position;
+	/**
+	 * The alive status
+	 */
 	protected Boolean alive = true;
-	private IMap map;
 	
-	public Mobile(Sprite sprite, Permeability permeability, Map map) {
+	/**
+	 * The map
+	 */
+	private IMap map; //Map ou IMap ????
+	
+	public Mobile(Sprite sprite, Permeability permeability, IMap map) {
 		super(sprite, permeability);
 		this.setMap(map);
 	}
@@ -27,7 +30,7 @@ public class Mobile extends Element implements IMobile{
     }*/
 
 	/**
-	 * Moves the element according to its previous position and the pressed key
+	 * Moves the element up
 	 */
 	@Override
 	public void moveUp() {
@@ -35,24 +38,36 @@ public class Mobile extends Element implements IMobile{
         this.setHasMoved();
 	}
 
+	/**
+	 * Moves the element down
+	 */
 	@Override
 	public void moveDown() {
         this.setY(this.getY() - 1);
         this.setHasMoved();
 	}
 
+	/**
+	 * Moves the element right
+	 */
 	@Override
 	public void moveRight() {
         this.setY(this.getX() + 1);
         this.setHasMoved();
 	}
 
+	/**
+	 * Moves the element left
+	 */
 	@Override
 	public void moveLeft() {
         this.setY(this.getX() - 1);
         this.setHasMoved();
 	}
 
+	/**
+	 * Do nothing
+	 */
     @Override
     public void doNothing() {
         this.setHasMoved();
@@ -62,13 +77,39 @@ public class Mobile extends Element implements IMobile{
         this.getMap().setMapHasChanged();
     }
 
+    /**
+     * Sets the element to alive
+     */
     @Override
-    public final int getX() {
-        return this.getPosition().x;
+    public Boolean isAlive() {
+        return this.alive;
+    }
+    
+    /**
+     * Change the status of the element to dead
+     */
+    protected void die() {
+        this.alive = false;
+        this.setHasMoved();
+    }
+    
+
+    
+    public IMap getMap() {
+        return this.map;
     }
 
+    private void setMap(final IMap map) {
+        this.map = map;
+    }
+    
+    @Override
+    public final int getX() {
+        //return this.getPosition().x;
+    	return this.getX();//TODO changer en quelque chose d'autre 
+    }
 
-    public final void setX(final int x) {
+ /*   public final void setX(final int x) {
         this.getPosition().x = x;
         if (this.isKilled()) {
             this.die();
@@ -91,23 +132,8 @@ public class Mobile extends Element implements IMobile{
 	
 
  
-    public IMap getMap() {
-        return this.map;
-    }
 
-    private void setMap(final IMap map) {
-        this.map = map;
-    }
-    
-    @Override
-    public Boolean isAlive() {
-        return this.alive;
-    }
-    
-    protected void die() {
-        this.alive = false;
-        this.setHasMoved();
-    }
+
     
     @Override
     public Boolean isKilled() {
@@ -122,13 +148,6 @@ public class Mobile extends Element implements IMobile{
 
     public void setPosition(final Point position) {
         this.position = position;
-    }
+    }*/
 
-	/**
-	 * change the status of the element if needed
-	 * @return
-	 */
-	public boolean visible() {
-		return false;
-	}
 }

@@ -14,7 +14,7 @@ public class Sprite {
 	private Image image;
 	
 	/**
-	 * The image name
+	 * The name of the image
 	 */
 	private String imageName;
 	

@@ -66,6 +66,16 @@ public class Element implements IElement{
     public final Image getImage() {
         return this.getSprite().getImage();
     }
+    
+    /**
+     * Gets x
+     */
+	@Override
+	public int getX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
     /**
      * Sets X
@@ -76,30 +86,21 @@ public class Element implements IElement{
 	}
 
 	/**
+	 * Gets Y
+	 */
+	@Override
+	public int getY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	/**
 	 * Sets Y
 	 */
 	@Override
 	public void setY(int y) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public Boolean isAlive() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getX() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getY() {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@Override

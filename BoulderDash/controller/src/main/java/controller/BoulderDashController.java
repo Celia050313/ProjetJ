@@ -41,7 +41,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
 	@Override
 	public void play() throws InterruptedException {
 		System.out.println("Hello gamer");
-		while (this.getModel().getHero().isAlive() && this.getModel().getDiamondToCollect() != 0) {
+		while (this.getModel().getHero().isAlive()) {
            // Thread.sleep(speed);
             switch (this.getStackOrder()) {
                 case RIGHT:
@@ -68,7 +68,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
         }
         this.getView().displayMessage("GAME OVER");
 	}
-	
+	// && this.getModel().getDiamondToCollect() != 0
 	
     @Override
     public final void orderPerform(final UserOrder userOrder) throws IOException {
