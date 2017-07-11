@@ -36,7 +36,7 @@ public class Hero extends Mobile {
 	    * @see model.Element.Mobile.Mobile#die()
 	    */
 	    @Override
-	    protected final void die() {
+	    public final void die() {
 	        super.die();
 	    }
 

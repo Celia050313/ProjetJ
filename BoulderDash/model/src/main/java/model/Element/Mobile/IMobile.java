@@ -49,5 +49,10 @@ public interface IMobile extends IElement, IPawn {
      * @return
      */
 	Boolean hasWon();
+
+	/**
+	 * Changes the status of the element
+	 */
+	void die();
     
 }

@@ -8,6 +8,7 @@ import model.Element.ElementFactory;
 import model.Element.IElement;
 import model.Element.Mobile.Diamond;
 import model.Element.Mobile.Enemy;
+import model.Element.Mobile.Hero;
 import model.Element.Mobile.Mobile;
 import model.Element.Mobile.MobileFactory;
 import model.Element.Mobile.Rock;
@@ -40,9 +41,10 @@ public class Map extends Observable implements IMap{
 	 * ID of the level
 	 */
 	private int idLevel;
-
-
 	
+	private IElement element;
+
+
 	/**
 	 * Instantiates a new map
 	 * @param idlevel
@@ -302,6 +304,10 @@ public class Map extends Observable implements IMap{
 						map[x][y] = null;
 						map[x + 1][y - 1] = element;
 					}
+					
+					if (map[element.getX()][element.getY() - 1].getClass().equals(Hero.class)){
+						getElement().getMobile().die();
+					}
 				}
 			}
 		}
@@ -323,4 +329,8 @@ public class Map extends Observable implements IMap{
 		this.DiamondNumber = DiamondNumber;
 	}
      
+	public IElement getElement() {
+		return element;
+	}
+
 }

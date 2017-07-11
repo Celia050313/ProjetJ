@@ -3,6 +3,7 @@ package model.Element;
 import java.awt.Image;
 
 import fr.exia.showboard.ISquare;
+import model.Element.Mobile.IMobile;
 
 public interface IElement extends ISquare {
 
@@ -25,5 +26,8 @@ public interface IElement extends ISquare {
      */
     @Override
     Image getImage();
+
+
+	IMobile getMobile();
 	
 }

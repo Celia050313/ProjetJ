@@ -2,6 +2,8 @@ package model.Element;
 
 import java.awt.Image;
 
+import model.Element.Mobile.IMobile;
+
 
 public class Element implements IElement{
 
@@ -14,6 +16,11 @@ public class Element implements IElement{
 	 * The sprite
 	 */
 	private Sprite  sprite;
+	
+	/**
+	 * The mobile
+	 */
+	private IMobile mobile;
 
 	/**
 	 * Instantiates a new element
@@ -65,5 +72,10 @@ public class Element implements IElement{
     public final Image getImage() {
         return this.getSprite().getImage();
     }
+
+	@Override
+	public IMobile getMobile() {
+		return this.mobile;
+	}
 	
 }

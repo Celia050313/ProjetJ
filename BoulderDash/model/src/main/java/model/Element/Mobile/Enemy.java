@@ -32,7 +32,7 @@ public class Enemy extends Mobile {
 	 * Changes the status of the enemy
 	 */
 	@Override
-	protected final void die() {
+	public final void die() {
 		super.die();
 	}
 }
