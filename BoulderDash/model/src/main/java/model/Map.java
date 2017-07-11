@@ -4,7 +4,6 @@ package model;
 import java.sql.SQLException;
 import java.util.Observable;
 
-import model.Element.Element;
 import model.Element.ElementFactory;
 import model.Element.IElement;
 import model.Element.Mobile.Diamond;
@@ -174,8 +173,8 @@ public class Map extends Observable implements IMap{
 	 * @param y the y coordinate
 	 */
 	public void setElementPosition(IElement element, int x, int y) { 
-		element.setX(x);
-		element.setY(y);
+		//element.setX(x);
+		//element.setY(y);
 		this.map[x][y] = element;
 	}
 
@@ -243,6 +242,7 @@ public class Map extends Observable implements IMap{
 	/**
 	 * Starts the movements of the enemies on the map
 	 */
+	@Override
 	public void startMoveEnemy() {
 		IElement[][] elem = getTheMap();
 		for (int j = 0; j < elem.length; j++) {
@@ -257,17 +257,13 @@ public class Map extends Observable implements IMap{
 	/**
 	 * Applies the game's gravity on the rocks and diamonds
 	 */
+	@Override
 	public void applyGravity(){
 		for (int y = 0; y < getHeight(); y++) {
 			for (int x = 0; x < getWidth(); x++) {
 				if (map[x][y].getClass().equals(Rock.class) || map[x][y].getClass().equals(Diamond.class)) {
 
 					Mobile element = (Mobile.class.cast((map[x][y])));
-					
-					
-					Element e = (Element) map[element.getX()][element.getY() + 1];
-					Class buffer =map[element.getX()][element.getY() + 1].getClass();
-					Class buffer2 = null;
 					
 					
 					if (map[element.getX()][element.getY() - 1].getClass().equals(null)) {

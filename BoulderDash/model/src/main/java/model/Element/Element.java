@@ -1,7 +1,6 @@
 package model.Element;
 
 import java.awt.Image;
-import java.awt.Point;
 
 
 public class Element implements IElement{
@@ -66,48 +65,5 @@ public class Element implements IElement{
     public final Image getImage() {
         return this.getSprite().getImage();
     }
-    
-    /**
-     * Gets x
-     */
-	@Override
-	public int getX() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-    /**
-     * Sets X
-     */
-	@Override
-	public void setX(int x) {
-
-	}
-
-	/**
-	 * Gets Y
-	 */
-	@Override
-	public int getY() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	/**
-	 * Sets Y
-	 */
-	@Override
-	public void setY(int y) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Point getPosition() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	
 }

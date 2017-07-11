@@ -17,10 +17,4 @@ public interface IBoulderDashModel {
 	 */
 	IMobile getHero();
 
-	/**
-	 * Gets the diamonds left to collect
-	 * @return
-	 */
-	int getDiamondToCollect();
-
 }

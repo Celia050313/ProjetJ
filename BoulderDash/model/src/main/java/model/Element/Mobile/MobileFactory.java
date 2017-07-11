@@ -6,7 +6,11 @@ public abstract class MobileFactory {
 	
 	private static IMap map;
 
-	private static final Hero Hero = new Hero(map);
+	private static int y;
+	
+	private static int x;
+
+	private static final Hero Hero = new Hero(x, y, map);
 	private static final Rock Rock = new Rock(map);
 	private static final Diamond Diamond = new Diamond( map);
 	private static final Enemy Enemy = new Enemy(map);

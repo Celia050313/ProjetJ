@@ -1,12 +1,10 @@
 package model.Element;
 
 import java.awt.Image;
-import java.awt.Point;
 
-import fr.exia.showboard.IPawn;
 import fr.exia.showboard.ISquare;
 
-public interface IElement extends ISquare, IPawn {
+public interface IElement extends ISquare {
 
 	/**
 	 * Gets the sprite
@@ -27,18 +25,5 @@ public interface IElement extends ISquare, IPawn {
      */
     @Override
     Image getImage();
-    
-    /**
-     * Sets x
-     * @param x
-     */
-	void setX(int x);
-
-	
-	/**
-	 * Sets y
-	 * @param y
-	 */
-	void setY(int y);
 	
 }

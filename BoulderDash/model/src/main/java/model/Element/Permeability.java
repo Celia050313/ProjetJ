@@ -9,5 +9,10 @@ public enum Permeability {
 	/**
 	 * The penetrable
 	 */
-	PENETRABLE;
+	PENETRABLE,
+	
+	/**
+	 * The exit
+	 */
+	EXIT;
 }

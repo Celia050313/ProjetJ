@@ -8,6 +8,9 @@ import view.IBoulderDashView;
 
 public class BoulderDashController implements IBoulderDashController, IOrderPerformer{
 	
+	/** The speed of the game. */
+    private static final int     speed = 300;
+	
 	/**
 	 * The model
 	 */
@@ -41,8 +44,9 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
 	@Override
 	public void play() throws InterruptedException {
 		System.out.println("Hello gamer");
-		while (this.getModel().getHero().isAlive()) {
-           // Thread.sleep(speed);
+		while (this.getModel().getHero().isAlive() || !this.getModel().getHero().hasWon()) {
+            Thread.sleep(speed);
+            this.getModel().getMap().startMoveEnemy();
             switch (this.getStackOrder()) {
                 case RIGHT:
                     this.getModel().getHero().moveRight();
@@ -61,14 +65,18 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
                     break;
             }
             this.clearStackOrder();
-            /*if (this.getModel().getHero().isAlive()) {
-                this.getModel().getMyVehicle().moveDown();
-            }
-            this.getView().followMyVehicle();*/
+         }
+            //this.getView().followMyVehicle();
+            this.getModel().getMap().applyGravity();
+        
+        if (!this.getModel().getHero().isAlive()){
+        	 this.getView().displayMessage("GAME OVER");
         }
-        this.getView().displayMessage("GAME OVER");
+        else if(this.getModel().getHero().hasWon()){
+        	this.getView().displayMessage("YOU WON !");
+        }
+       
 	}
-	// && this.getModel().getDiamondToCollect() != 0
 	
     @Override
     public final void orderPerform(final UserOrder userOrder) throws IOException {

@@ -37,6 +37,11 @@ public interface IMobile extends IElement, IPawn {
      */
     Boolean isAlive();
    
+    /**
+     * Checks if the element has been killed
+     * @return
+     */
+    Boolean isKilled();
     
     /**
      * Gets the position
@@ -44,5 +49,11 @@ public interface IMobile extends IElement, IPawn {
      */
     @Override
     Point getPosition();
+
+    /**
+     * checks if the player has won
+     * @return
+     */
+	Boolean hasWon();
     
 }

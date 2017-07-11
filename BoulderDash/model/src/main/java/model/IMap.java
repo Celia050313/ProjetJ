@@ -37,6 +37,14 @@ public interface IMap {
      */
     Observable getObservable();
 
-
+    /**
+     * Applies the game's gravity
+     */
+	void applyGravity();
 	
+	/**
+	 * Starts the movements of the enemies
+	 */
+	void startMoveEnemy();
+
 }

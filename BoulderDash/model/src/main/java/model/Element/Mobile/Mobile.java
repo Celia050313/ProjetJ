@@ -1,9 +1,14 @@
 package model.Element.Mobile;
 
+import java.awt.Point;
+
 import model.IMap;
 import model.Element.Element;
 import model.Element.Permeability;
 import model.Element.Sprite;
+import model.Element.MotionlessElement.Dirt;
+import model.Element.MotionlessElement.Exit;
+import model.Element.MotionlessElement.Wall;
 
 public class Mobile extends Element implements IMobile{
 	
@@ -15,26 +20,50 @@ public class Mobile extends Element implements IMobile{
 	/**
 	 * The map
 	 */
-	private IMap map; //Map ou IMap ????
+	private IMap map;
 	
+	/**
+	 * The position
+	 */
+	private Point position;
+	
+	/**
+	 * The won status
+	 */
+	private Boolean win =false;
+	
+	/**
+	 * Instantiates a new mobile
+	 * @param sprite
+	 * @param permeability
+	 * @param map
+	 */
 	public Mobile(Sprite sprite, Permeability permeability, IMap map) {
 		super(sprite, permeability);
 		this.setMap(map);
 	}
 	
-   /* Mobile(final int x, final int y, final Sprite sprite, final IMap map, final Permeability permeability) {
+	/**
+	 * Instantiates a new mobile
+	 * @param x
+	 * @param y
+	 * @param sprite
+	 * @param permeability
+	 * @param map
+	 */
+   Mobile(final int x, final int y, final Sprite sprite, final Permeability permeability, final IMap map) {
         super(sprite, permeability);
         this.setMap(map);
         this.setX(x);
         this.setY(y);
-    }*/
+    }
 
 	/**
 	 * Moves the element up
 	 */
 	@Override
 	public void moveUp() {
-        this.setY(this.getY() + 1);
+        this.setY(this.getY() - 1);
         this.setHasMoved();
 	}
 
@@ -43,7 +72,7 @@ public class Mobile extends Element implements IMobile{
 	 */
 	@Override
 	public void moveDown() {
-        this.setY(this.getY() - 1);
+        this.setY(this.getY() + 1);
         this.setHasMoved();
 	}
 
@@ -73,10 +102,68 @@ public class Mobile extends Element implements IMobile{
         this.setHasMoved();
     }
     
+    /**
+     * Sets that an element has moved
+     */
     private void setHasMoved() {
         this.getMap().setMapHasChanged();
     }
 
+    /**
+     * Gets the x
+     */
+    @Override
+    public final int getX() {
+       return this.getPosition().x;
+    }
+
+    
+    /**
+     * Sets the x
+     */
+   public final void setX(final int x) {
+        this.getPosition().x = x;
+        if (this.isKilled()) {
+            this.die();
+        }
+    }
+
+
+   /**
+    * Gets the y
+    */
+    @Override
+    public final int getY() {
+        return this.getPosition().y;
+    }
+
+
+    /**
+     * Sets the Y
+     */
+    public final void setY(final int y) {
+        this.getPosition().y = y;
+        if (this.isKilled()) {
+            this.die();
+        }
+    }
+	
+    /**
+     * Gets the map
+     * @return
+     */
+    public IMap getMap() {
+        return this.map;
+    }
+
+    /**
+     * Sets the map
+     * @param map
+     */
+    private void setMap(final IMap map) {
+        this.map = map;
+    }
+    
     /**
      * Sets the element to alive
      */
@@ -92,62 +179,79 @@ public class Mobile extends Element implements IMobile{
         this.alive = false;
         this.setHasMoved();
     }
-    
-
-    
-    public IMap getMap() {
-        return this.map;
-    }
-
-    private void setMap(final IMap map) {
-        this.map = map;
-    }
-    
-    @Override
-    public final int getX() {
-        //return this.getPosition().x;
-    	return this.getX();//TODO changer en quelque chose d'autre 
-    }
-
- /*   public final void setX(final int x) {
-        this.getPosition().x = x;
-        if (this.isKilled()) {
-            this.die();
-        }
-    }
-
-
-    @Override
-    public final int getY() {
-        return this.getPosition().y;
-    }
-
-
-    public final void setY(final int y) {
-        this.getPosition().y = (y + this.getMap().getHeight()) % this.getMap().getHeight();
-        if (this.isKilled()) {
-            this.die();
-        }
-    }
-	
 
  
-
-
-    
+    /**
+     * Checks if the element is killed
+     */
     @Override
     public Boolean isKilled() {
-        return this.getMap().getTheMap(this.getX(), this.getY()).getPermeability() == Permeability.BLOCKING;
+    	if (this.getMap().getElementByPosition(this.getX(), this.getY()).getPermeability() == Permeability.PENETRABLE){
+    		
+    		if(this.getMap().getElementByPosition(this.getX(), this.getY()).getClass().equals(Diamond.class)){
+    			
+    		}
+    		
+    		else if(this.getMap().getElementByPosition(this.getX(), this.getY()).getClass().equals(Dirt.class)){
+    			
+    		}
+    	}
+    	else if (this.getMap().getElementByPosition(this.getX(), this.getY()).getPermeability() == Permeability.BLOCKING){
+    		
+    		if(this.getMap().getElementByPosition(this.getX(), this.getY()).getClass().equals(Wall.class)){
+    			return false;
+    		}
+    		
+    		else if(this.getMap().getElementByPosition(this.getX(), this.getY()).getClass().equals(Rock.class)){
+    			return false; //TODO push rock
+    		}
+    		
+    		else if(this.getMap().getElementByPosition(this.getX(), this.getY()).getClass().equals(Enemy.class)){
+    			return true;
+    		}
+    		
+    		else if(this.getMap().getElementByPosition(this.getX(), this.getY()).getClass().equals(Exit.class)){
+    			return false;
+    		}
+    		
+    		
+    	}
+    	else if(this.getMap().getElementByPosition(this.getX(), this.getY()).getPermeability() == Permeability.EXIT){
+    		this.win();
+    		return false;
+    	}
+    }
+    
+    /**
+     * Checks if the player has won
+     */
+    public Boolean hasWon(){
+    	return this.win;
     }
 	
+    /**
+     * Change the status to win
+     */
+    protected void win(){
+    	this.win = true;
+    	this.setHasMoved();
+    }
+    
+    /**
+     * Gets the position
+     */
     @Override
     public Point getPosition() {
         return this.position;
     }
 
 
+    /**
+     * Sets the position
+     * @param position
+     */
     public void setPosition(final Point position) {
         this.position = position;
-    }*/
+    }
 
 }

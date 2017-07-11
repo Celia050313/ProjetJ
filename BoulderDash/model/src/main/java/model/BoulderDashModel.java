@@ -29,12 +29,16 @@ public class BoulderDashModel implements IBoulderDashModel{
 	private int DiamondToCollect;
 
 	/**
-	 * Instantiates the model
-	 * @throws SQLException 
+	 * Instantiates a new model
+	 * @param idLevel
+	 * @param heroStartX
+	 * @param heroStartY
+	 * @throws IOException
+	 * @throws SQLException
 	 */
-	public BoulderDashModel(int idLevel) throws IOException, SQLException {
+	public BoulderDashModel(int idLevel, final int heroStartX, final int heroStartY) throws IOException, SQLException {
 		this.setMap(new Map(idLevel));
-		this.setHero(new Hero(this.getMap()));
+		this.setHero(new Hero(heroStartX, heroStartY, this.getMap()));
 	}
 	
 	/**
@@ -72,9 +76,4 @@ public class BoulderDashModel implements IBoulderDashModel{
     private void setHero(final IMobile hero) {
         this.hero = hero;
     }
-
-	@Override
-	public int getDiamondToCollect() {
-		return this.DiamondToCollect;
-	}
 }
