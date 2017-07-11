@@ -38,12 +38,6 @@ public interface IMobile extends IElement, IPawn {
     Boolean isAlive();
    
     /**
-     * Checks if the element has been killed
-     * @return
-     */
-    Boolean isKilled();
-    
-    /**
      * Gets the position
      * @return
      */

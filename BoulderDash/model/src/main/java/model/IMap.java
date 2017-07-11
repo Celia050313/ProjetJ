@@ -26,6 +26,14 @@ public interface IMap {
      */
 	IElement getElementByPosition(int x, int y);
 	
+	/**
+	 * Sets the given element at the given position
+	 * @param element
+	 * @param x
+	 * @param y
+	 */
+	void setElementPosition(IElement element, int x, int y);
+	
     /**
      * Sets that the map has changed.
      */
@@ -46,5 +54,7 @@ public interface IMap {
 	 * Starts the movements of the enemies
 	 */
 	void startMoveEnemy();
+
+	
 
 }

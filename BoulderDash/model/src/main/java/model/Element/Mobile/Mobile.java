@@ -90,7 +90,35 @@ public class Mobile extends Element implements IMobile{
 	 */
 	@Override
 	public void moveLeft() {
-        this.setY(this.getX() - 1);
+		Mobile element = (Mobile.class.cast(this.getMap().getElementByPosition(this.getX()-1, this.getY())));
+		if (element.getPermeability() == Permeability.PENETRABLE){
+			
+    		
+    		if(element.getClass().equals(Diamond.class)){
+    			this.getMap().setElementPosition(null, getX(), getY());
+    			this.setY(this.getX() - 1);
+    		}
+    		
+    		else if(element.equals(Dirt.class)){
+    			this.getMap().setElementPosition(null, getX(), getY());
+    			this.setY(this.getX() - 1);
+    			
+    		}
+    	}
+    	else if (element.getPermeability() == Permeability.BLOCKING){
+    		
+    		if(element.getClass().equals(Wall.class) || element.getClass().equals(Rock.class) ||element.getClass().equals(Enemy.class) || element.getClass().equals(Exit.class)){
+    			//
+    		}
+    		
+    		else if(element.getClass().equals(Enemy.class)){
+    			this.die();
+    		}
+    	}
+    	else if(element.getPermeability() == Permeability.EXIT){
+    		this.win();
+    	}
+		
         this.setHasMoved();
 	}
 
@@ -123,9 +151,7 @@ public class Mobile extends Element implements IMobile{
      */
    public final void setX(final int x) {
         this.getPosition().x = x;
-        if (this.isKilled()) {
-            this.die();
-        }
+        
     }
 
 
@@ -143,9 +169,6 @@ public class Mobile extends Element implements IMobile{
      */
     public final void setY(final int y) {
         this.getPosition().y = y;
-        if (this.isKilled()) {
-            this.die();
-        }
     }
 	
     /**
@@ -180,47 +203,6 @@ public class Mobile extends Element implements IMobile{
         this.setHasMoved();
     }
 
- 
-    /**
-     * Checks if the element is killed
-     */
-    @Override
-    public Boolean isKilled() {
-    	if (this.getMap().getElementByPosition(this.getX(), this.getY()).getPermeability() == Permeability.PENETRABLE){
-    		
-    		if(this.getMap().getElementByPosition(this.getX(), this.getY()).getClass().equals(Diamond.class)){
-    			
-    		}
-    		
-    		else if(this.getMap().getElementByPosition(this.getX(), this.getY()).getClass().equals(Dirt.class)){
-    			
-    		}
-    	}
-    	else if (this.getMap().getElementByPosition(this.getX(), this.getY()).getPermeability() == Permeability.BLOCKING){
-    		
-    		if(this.getMap().getElementByPosition(this.getX(), this.getY()).getClass().equals(Wall.class)){
-    			return false;
-    		}
-    		
-    		else if(this.getMap().getElementByPosition(this.getX(), this.getY()).getClass().equals(Rock.class)){
-    			return false; //TODO push rock
-    		}
-    		
-    		else if(this.getMap().getElementByPosition(this.getX(), this.getY()).getClass().equals(Enemy.class)){
-    			return true;
-    		}
-    		
-    		else if(this.getMap().getElementByPosition(this.getX(), this.getY()).getClass().equals(Exit.class)){
-    			return false;
-    		}
-    		
-    		
-    	}
-    	else if(this.getMap().getElementByPosition(this.getX(), this.getY()).getPermeability() == Permeability.EXIT){
-    		this.win();
-    		return false;
-    	}
-    }
     
     /**
      * Checks if the player has won

@@ -78,6 +78,9 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
        
 	}
 	
+	/**
+	 * Stocks the order to perform
+	 */
     @Override
     public final void orderPerform(final UserOrder userOrder) throws IOException {
         this.setStackOrder(userOrder);
@@ -143,8 +146,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
      * Gets the order performer
      */
 	@Override
-	public IOrderPerformer getOrderPeformer() {
-		// TODO Auto-generated method stub
-		return null;
+	public IOrderPerformer getOrderPerformer() {
+		return this;
 	}
 }

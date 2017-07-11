@@ -10,9 +10,9 @@ public interface IBoulderDashController {
 	public void play() throws InterruptedException;
 
 	/**
-	 * Gets the order performed 
+	 * Gets the order to perform
 	 * @return
 	 */
-	IOrderPerformer getOrderPeformer();
+	IOrderPerformer getOrderPerformer();
 
 }

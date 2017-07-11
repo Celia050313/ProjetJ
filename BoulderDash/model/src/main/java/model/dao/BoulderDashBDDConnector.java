@@ -1,9 +1,8 @@
 package model.dao;
 
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.ResultSet;
-import java.sql.CallableStatement;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import com.mysql.cj.api.jdbc.Statement;
 
 /**
  * <h1>The Class BoulderDashBDDConnector.</h1>
@@ -12,26 +11,27 @@ import java.sql.CallableStatement;
  * @version 1.0
  */
 final class BoulderDashBDDConnector {
+
 	/**
 	 * The login.
 	 */
-	private static String _user = "root";
+	private static String user = "root";
 	/**
 	 * The password.
 	 */
-	private static String _password = "";
+	private static String password = "";
 	/**
 	 * The url.
 	 */
-	private static String _url = "jdbc:mysql://localhost/boulderdash?useSSL=false&serverTimezone=UTC";
+	private static String url = "jdbc:mysql://localhost/boulderdash?useSSL=false&serverTimezone=UTC";
 	/**
 	 * The connection.
 	 */
-	private Connection _connection;
+	private java.sql.Connection connection;
 	/**
 	 * The statement.
 	 */
-	private Statement _statement;
+	private java.sql.Statement statement;
 	/**
 	 * The instance.
 	 */
@@ -41,15 +41,27 @@ final class BoulderDashBDDConnector {
 	 * Instantiates a new boulder dash BDD connector.
 	 */
 	private BoulderDashBDDConnector() {
-		throw new UnsupportedOperationException();
+		this.open();
 	}
+	
+	/**
+	 * Gets the single instance of BoulderDashBDDConnector.
+	 * @return single instance of BoulderDashBDDConnector
+	 */
+	public static BoulderDashBDDConnector getInstance() {
+		if (instance == null){
+			setInstance(new BoulderDashBDDConnector());
+		}
+		return instance;
+	}
+
 
 	/**
 	 * Sets the instance.
-	 * @param aInstance the new instance
+	 * @param instance the new instance
 	 */
-	private static void setInstance(final BoulderDashBDDConnector aInstance) {
-		instance = aInstance;
+	private static void setInstance(final BoulderDashBDDConnector instance) {
+		BoulderDashBDDConnector.instance = instance;
 	}
 
 	/**
@@ -57,73 +69,88 @@ final class BoulderDashBDDConnector {
 	 * @return true, if successful
 	 */
 	private boolean open() {
-		throw new UnsupportedOperationException();
+		try {
+			this.connection = DriverManager.getConnection(BoulderDashBDDConnector.url, BoulderDashBDDConnector.user, BoulderDashBDDConnector.password);
+	        this.statement = this.connection.createStatement();
+	            return true;
+	        } catch (final SQLException exception) {
+	            exception.printStackTrace();
+	        }
+	        return false;
 	}
 
 	/**
 	 * Execute query.
-	 * @param aQuery the query
+	 * @param query the query
 	 * @return the result set
 	 */
-	public ResultSet executeQuery(final String aQuery) {
-		throw new UnsupportedOperationException();
+	public java.sql.ResultSet executeQuery(final String query) {
+		 try {
+	            return this.getStatement().executeQuery(query);
+	        } catch (final SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return null;
 	}
 
 	/**
 	 * Prepare call.
-	 * @param aQuery the query
+	 * @param query the query
 	 * @return the java.sql. callable statement
 	 */
-	public CallableStatement prepareCall(final String aQuery) {
-		throw new UnsupportedOperationException();
+	public java.sql.CallableStatement prepareCall(final String query) {
+		  try {
+	            return this.getConnection().prepareCall(query);
+	        } catch (final SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return null;
 	}
 
 	/**
 	 * Execute update.
-	 * @param aQuery the query
+	 * @param query the query
 	 * @return the int
 	 */
-	public int executeUpdate(final String aQuery) {
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Gets the single instance of BoulderDashBDDConnector.
-	 * @return single instance of BoulderDashBDDConnector
-	 */
-	public static BoulderDashBDDConnector getInstance() {
-		return instance;
+	public int executeUpdate(final String query) {
+	    try {
+            return this.statement.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+        } catch (final SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
 	}
 
 	/**
 	 * Gets the connection.
 	 * @return the connection
 	 */
-	public Connection getConnection() {
-		return this._connection;
+	public java.sql.Connection getConnection() {
+		return this.connection;
 	}
 
 	/**
 	 * Sets the connection.
-	 * @param aConnection the new connection
+	 * @param connection the new connection
 	 */
-	public void setConnection(final Connection aConnection) {
-		this._connection = aConnection;
+	public void setConnection(final java.sql.Connection connection) {
+		this.connection = connection;
 	}
 
 	/**
 	 * Gets the statement.
 	 * @return the statement
 	 */
-	public Statement getStatement() {
-		return this._statement;
+	public java.sql.Statement getStatement() {
+		return this.statement;
 	}
 
 	/**
 	 * Sets the statement.
-	 * @param aStatement the new statement
+	 * @param statement the new statement
 	 */
-	public void setStatement(final Statement aStatement) {
-		this._statement = aStatement;
+	public void setStatement(final java.sql.Statement statement) {
+		this.statement = statement;
 	}
+
 }

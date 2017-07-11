@@ -172,6 +172,7 @@ public class Map extends Observable implements IMap{
 	 * @param x the x coordinate
 	 * @param y the y coordinate
 	 */
+	@Override
 	public void setElementPosition(IElement element, int x, int y) { 
 		//element.setX(x);
 		//element.setY(y);
