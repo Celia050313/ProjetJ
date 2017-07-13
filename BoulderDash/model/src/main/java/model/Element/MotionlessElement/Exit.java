@@ -41,10 +41,12 @@ public class Exit extends MotionlessElement {
 	 * Change the status of the exit
 	 * @param DiamondNumber
 	 * @param DiamondCollected
+	 * @throws IOException 
 	 */
 	//Reveals the exit
-	public void reveal(int DiamondNumber, int DiamondCollected) {
-		if (DiamondNumber == DiamondCollected){
+	public void reveal(int DiamondNumber) throws IOException {
+		if (DiamondNumber == 0){
+			realSPRITE.loadImage();
 			this.setSprite(realSPRITE);
 			this.setPermeability(Permeability.EXIT);
 		}

@@ -1,6 +1,7 @@
 package model.Element;
 
 import java.awt.Image;
+import java.awt.Point;
 
 import model.Element.Mobile.IMobile;
 
@@ -21,6 +22,11 @@ public class Element implements IElement{
 	 * The mobile
 	 */
 	private IMobile mobile;
+	
+	/**
+	 * The position
+	 */
+	private Point position;
 
 	/**
 	 * Instantiates a new element
@@ -78,4 +84,45 @@ public class Element implements IElement{
 		return this.mobile;
 	}
 	
+    /**
+     * Gets the x
+     */
+  /*  @Override
+    public int getX() {
+       return this.getPosition().x;
+    }
+
+    
+    /**
+     * Sets the x
+     */
+  /*  public void setX(int x) {
+    	this.getPosition().x = x;
+        
+    }
+
+
+   /**
+    * Gets the y
+    */
+   /* @Override
+    public int getY() {
+        return this.getPosition().y;
+    }
+
+
+    /**
+     * Sets the Y
+     */
+   /* public void setY(int y) {
+        this.getPosition().y = y;
+    }
+	
+    /**
+     * Gets the position
+     */
+   /* @Override
+    public Point getPosition() {
+        return this.position;
+    }*/
 }

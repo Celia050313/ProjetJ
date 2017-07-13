@@ -19,18 +19,17 @@ public class Map extends Observable implements IMap{
 	/**
 	 * width of the map
 	 */
-	private int width = 16;
+	private int width = 15;
 	
 	/**
 	 * height of the map
 	 */
-	private int height = 16;
+	private int height = 15;
 	
-	//Diamond left to collect
+	/**
+	 * Diamonds left to collect
+	 */
 	private int DiamondNumber;
-	
-	//Diamond already collected
-	private int DiamondCollected;
 	
 	/**
 	 * Double array that constitutes the map
@@ -63,20 +62,34 @@ public class Map extends Observable implements IMap{
     private void loadLevel(int idLevel) throws SQLException {
         map = new IElement[this.getWidth()][this.getHeight()];
         MobileFactory.setMap(this);
-        char[][] consoleMap= {};
-        String t;
+        char[][] consoleMap;
+    	
+        consoleMap = new char[getWidth()][getHeight()];
         
-    	for ( int i = 1; i <= getWidth(); i++ ){
+		for ( int i = 1; i <= getWidth(); i++ ){
 			for ( int j = 1; j <= getHeight(); j++){
 				
+				String t="";
 				t=LevelsDAO.getElement(idLevel, i, j);
-				consoleMap[i][j]=t.charAt(0);
 				
+				for (int y = 0; y <=getHeight()-1; y++){
+					for (int x = 0; x <= getWidth()-1; x++){
+						if(t=="V"){
+							consoleMap[x][y]=32;
+						}
+						else{
+							consoleMap[x][y]=t.charAt(0);
+							
+						}
+					}
 				}
+			}
 		}
     	
-		for (int x = 0; x <= getWidth(); x++ ){
-			for (int y = 0; y <= getHeight(); y++){
+		
+		for (int y = 0; y <= getHeight()-1; y++){
+			for (int x = 0; x <= getWidth()-1; x++ ){
+				System.out.println(ElementFactory.getFromFileSymbol(consoleMap[x][y]));
                 this.setElementPosition(ElementFactory.getFromFileSymbol(consoleMap[x][y]), x, y);
             	
             }
@@ -308,6 +321,9 @@ public class Map extends Observable implements IMap{
 					if (map[element.getX()][element.getY() - 1].getClass().equals(Hero.class)){
 						getElement().getMobile().die();
 					}
+					else if (map[element.getX()][element.getY() - 1].getClass().equals(Enemy.class)){
+						
+					}
 				}
 			}
 		}
@@ -317,6 +333,7 @@ public class Map extends Observable implements IMap{
 	 * Gets the number of diamonds to collect to finish the level
 	 * @return
 	 */
+	@Override
 	public int getDiamondNumber() {
 		return DiamondNumber;
 	}
@@ -325,6 +342,7 @@ public class Map extends Observable implements IMap{
 	 * Sets the number of diamonds to collect to finish the level
 	 * @param DiamondNumber
 	 */
+	@Override
 	public void setDiamondNumber(int DiamondNumber) {
 		this.DiamondNumber = DiamondNumber;
 	}

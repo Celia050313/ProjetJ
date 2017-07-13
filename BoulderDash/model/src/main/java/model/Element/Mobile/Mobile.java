@@ -69,11 +69,13 @@ public class Mobile extends Element implements IMobile{
 	 */
 	@Override
 	public void moveUp() {
-		Mobile element = (Mobile.class.cast(this.getMap().getElementByPosition(this.getX(), this.getY()-1)));
+		Element element = (Element.class.cast(this.getMap().getElementByPosition(this.getX(), this.getY()-1)));
 		if (element.getPermeability() == Permeability.PENETRABLE){
 			
     		
     		if(element.getClass().equals(Diamond.class)){
+    			this.getMap().setDiamondNumber(this.getMap().getDiamondNumber()-1);
+    			//Exit.reveal(this.getMap().getDiamondNumber());
     			this.getMap().setElementPosition(null, getX(), getY());
     			this.setY(this.getY() - 1);
     		}
@@ -106,11 +108,12 @@ public class Mobile extends Element implements IMobile{
 	 */
 	@Override
 	public void moveDown() {
-		Mobile element = (Mobile.class.cast(this.getMap().getElementByPosition(this.getX(), this.getY()+1)));
+		Element element = (Element.class.cast(this.getMap().getElementByPosition(this.getX(), this.getY()+1)));
 		if (element.getPermeability() == Permeability.PENETRABLE){
 			
     		
     		if(element.getClass().equals(Diamond.class)){
+    			this.getMap().setDiamondNumber(this.getMap().getDiamondNumber()-1);
     			this.getMap().setElementPosition(null, getX(), getY());
     			this.setY(this.getY() + 1);
     		}
@@ -143,11 +146,12 @@ public class Mobile extends Element implements IMobile{
 	 */
 	@Override
 	public void moveRight() {
-		Mobile element = (Mobile.class.cast(this.getMap().getElementByPosition(this.getX()+1, this.getY())));
+		Element element = (Element.class.cast(this.getMap().getElementByPosition(this.getX()+1, this.getY())));
 		if (element.getPermeability() == Permeability.PENETRABLE){
 			
     		
     		if(element.getClass().equals(Diamond.class)){
+    			this.getMap().setDiamondNumber(this.getMap().getDiamondNumber()-1);
     			this.getMap().setElementPosition(null, getX(), getY());
     			this.setX(this.getX() + 1);
     		}
@@ -181,11 +185,13 @@ public class Mobile extends Element implements IMobile{
 	 */
 	@Override
 	public void moveLeft() {
-		Mobile element = (Mobile.class.cast(this.getMap().getElementByPosition(this.getX()-1, this.getY())));
+		Element element = (Element.class.cast(this.getMap().getElementByPosition(this.getX()-1, this.getY())));
 		if (element.getPermeability() == Permeability.PENETRABLE){
 			
     		
     		if(element.getClass().equals(Diamond.class)){
+    			this.getMap().setDiamondNumber(this.getMap().getDiamondNumber()-1);
+    			
     			this.getMap().setElementPosition(null, getX(), getY());
     			this.setX(this.getX() - 1);
     		}
@@ -232,7 +238,7 @@ public class Mobile extends Element implements IMobile{
      * Gets the x
      */
     @Override
-    public final int getX() {
+    public int getX() {
        return this.getPosition().x;
     }
 

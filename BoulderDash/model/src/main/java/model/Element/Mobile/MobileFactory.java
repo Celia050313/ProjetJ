@@ -6,11 +6,11 @@ public abstract class MobileFactory {
 	
 	private static IMap map;
 
-	private static int y;
+	//private static int y = 3;
 	
-	private static int x;
+	//private static int x = 3;
 
-	private static final Hero Hero = new Hero(x, y, map);
+	//private static final Hero Hero = new Hero(x, y, map);
 	private static final Rock Rock = new Rock(map);
 	private static final Diamond Diamond = new Diamond( map);
 	private static final Enemy Enemy = new Enemy(map);
@@ -18,7 +18,7 @@ public abstract class MobileFactory {
 	/**
 	 * Factory for mobile elements
 	 */
-	private static Mobile[] Mobile = {Enemy, Rock, Hero, Diamond};
+	private static Mobile[] Mobile = {Enemy, Rock, Diamond};
 	
 	public static Mobile createEnemy() {
 		return Enemy;
@@ -28,9 +28,9 @@ public abstract class MobileFactory {
 		return Rock;
 	}
 	
-	public static Mobile createHero() {
-		return Hero;
-	}
+	//public static Mobile createHero() {
+	//	return Hero;
+	//}
 	
 	public static Mobile createDiamond() {
 		return Diamond;

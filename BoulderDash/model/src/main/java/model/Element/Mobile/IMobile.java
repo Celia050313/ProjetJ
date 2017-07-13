@@ -36,13 +36,7 @@ public interface IMobile extends IElement, IPawn {
      * @return
      */
     Boolean isAlive();
-   
-    /**
-     * Gets the position
-     * @return
-     */
-    @Override
-    Point getPosition();
+
 
     /**
      * checks if the player has won
@@ -54,5 +48,28 @@ public interface IMobile extends IElement, IPawn {
 	 * Changes the status of the element
 	 */
 	void die();
+	
+    /**
+     * Gets the x
+     * @return
+     */
+    @Override
+    int getX();
+
+    /**
+     * Gets the y.
+     * @return 
+     */
+    @Override
+    int getY();
+    
+    /**
+     * Gets the position
+     * @return
+     */
+    @Override
+    Point getPosition();
+	
+	
     
 }

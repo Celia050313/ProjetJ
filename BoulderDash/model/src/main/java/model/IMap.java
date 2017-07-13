@@ -54,6 +54,17 @@ public interface IMap {
 	 * Starts the movements of the enemies
 	 */
 	void startMoveEnemy();
+	
+	/**
+	 * Gets the number of diamonds left to collect to finish the level
+	 * @return
+	 */
+	int getDiamondNumber();
+	/**
+	 * Sets the number of diamonds to collect to finish the level
+	 * @param DiamondNumber
+	 */
+	void setDiamondNumber(int DiamondNumber);
 
 	
 

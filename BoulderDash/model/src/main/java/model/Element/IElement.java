@@ -22,12 +22,14 @@ public interface IElement extends ISquare {
 
     /**
      * Gets the image
-     * @return
+     * @return	
      */
     @Override
     Image getImage();
 
 
 	IMobile getMobile();
+	
+
 	
 }
