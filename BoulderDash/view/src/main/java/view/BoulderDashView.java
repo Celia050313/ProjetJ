@@ -2,6 +2,7 @@ package view;
 
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -11,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import controller.BoulderDashController;
 import controller.IOrderPerformer;
 import controller.UserOrder;
 import fr.exia.showboard.BoardFrame;
@@ -46,7 +48,7 @@ public class BoulderDashView extends JFrame implements Runnable, KeyListener, IB
 	
 	
 	 // the size of the view
-	private static final int mapView = 16;
+	private static final int mapView = 20;
 	
 	/**
 	 * The size of the square
@@ -67,7 +69,7 @@ public class BoulderDashView extends JFrame implements Runnable, KeyListener, IB
 		this.setMap(map);
 		this.setHero(hero);
 		this.getHero().getSprite().loadImage();
-		this.setCloseView(new Rectangle(0, this.getHero().getY(), this.getMap().getWidth(), mapView));
+		this.setCloseView(new Rectangle(0, 0, this.getMap().getWidth(), mapView));
 		SwingUtilities.invokeLater(this);
 	}
 	
@@ -78,10 +80,15 @@ public class BoulderDashView extends JFrame implements Runnable, KeyListener, IB
     public final void displayMessage(final String message) {
         JOptionPane.showMessageDialog(null, message);
     }
+    
+    public void displayDiamondToCollect( Graphics g) {
+    	String diamondLeft = BoulderDashController.diamondLeft();
+    	g.drawString(diamondLeft, 16, 16);
+    }
 	
     @Override
     public final void run(){
-    	final BoardFrame boardframe = new BoardFrame("View");
+    	final BoardFrame boardframe = new BoardFrame("Boulder Dash");
     	boardframe.setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
     	boardframe.setDisplayFrame(this.closeView);
         boardframe.setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
@@ -170,6 +177,7 @@ public class BoulderDashView extends JFrame implements Runnable, KeyListener, IB
          */
         private void setMap(final IMap map) throws IOException {
             this.map = map;
+            
             for (int x = 0; x < this.getMap().getWidth(); x++) {
                 for (int y = 0; y < this.getMap().getHeight(); y++) {
                     this.getMap().getElementByPosition(x, y).getSprite().loadImage();
@@ -265,9 +273,6 @@ public class BoulderDashView extends JFrame implements Runnable, KeyListener, IB
      * display the number of diamond needed to end the level
      * 
      */
-  /*  	public void displayDiamondToCollect( Graphics g) {
-    		String diamondLeft = BoulderDashController.diamondLeft();
-    		g.drawString(diamondLeft, 16, 16);
-    	}*/
+
 	
 }

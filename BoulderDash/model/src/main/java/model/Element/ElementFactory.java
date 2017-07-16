@@ -21,6 +21,7 @@ public class ElementFactory {
             case 'S':
             case 'D':
             case 'W':
+            case 'V':
                 return MotionlessFactory.getFromFileSymbol(c);
             
             default: return null; 

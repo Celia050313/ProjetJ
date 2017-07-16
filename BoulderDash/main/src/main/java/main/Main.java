@@ -14,13 +14,13 @@ public abstract class Main {
 	/**
 	 * The id of the level
 	 */
-	private static final int idLevel = 1;
+	private static final int idLevel = 3;
 	
     /** The Constant startX. */
-    private static final int startX = 3;
+    private static final int startX = 2;
 
     /** The Constant startY. */
-    private static final int startY = 3;
+    private static final int startY = 2;
 	
     /**
      * The main method.

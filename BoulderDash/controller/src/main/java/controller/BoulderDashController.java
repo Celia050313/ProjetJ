@@ -9,7 +9,7 @@ import view.IBoulderDashView;
 public class BoulderDashController implements IBoulderDashController, IOrderPerformer{
 	
 	/** The speed of the game. */
-    private static final int     speed = 300;
+    private static final int     speed = 200;
 	
 	/**
 	 * The model
@@ -46,6 +46,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
 		System.out.println("Hello gamer");
 		while (this.getModel().getHero().isAlive() || !this.getModel().getHero().hasWon()) {
             Thread.sleep(speed);
+            this.getView().displayMessage("YOU WON !");
             this.getModel().getMap().startMoveEnemy();
             switch (this.getStackOrder()) {
                 case RIGHT:
@@ -66,7 +67,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
             }
             this.clearStackOrder();
          }
-            //this.getView().followMyVehicle();
+            
             this.getModel().getMap().applyGravity();
         
         if (!this.getModel().getHero().isAlive()){

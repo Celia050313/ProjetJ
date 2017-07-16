@@ -18,9 +18,14 @@ public abstract class MotionlessFactory {
 	private static final Dirt Dirt = new Dirt();
 	
 	/**
+	 * The constant background
+	 */
+	private static final Background Background = new Background();
+	
+	/**
 	 * Motionless elements is an array of all possible MotionlessElement
 	 */
-	private static MotionlessElement[] MotionlessElement = {Dirt, Exit, Wall};
+	private static MotionlessElement[] MotionlessElement = {Dirt, Exit, Wall, Background};
 	
 	
 	/**
@@ -45,6 +50,14 @@ public abstract class MotionlessFactory {
 	 */
 	public static MotionlessElement createExit() {
 		return Exit;
+	}
+	
+	/**
+	 * Create a new MotionlessElement background
+	 * @return
+	 */
+	public static MotionlessElement createBackground(){
+		return Background;
 	}
 
 	/**

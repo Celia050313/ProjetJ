@@ -38,7 +38,7 @@ public class Sprite {
      * @throws IOException
      */
     public final void loadImage() throws IOException {
-        this.setImage(ImageIO.read(new File("images/" + this.getImageName())));
+        this.setImage(ImageIO.read(new File("C:\\Users\\Sisi\\Pictures\\sprite\\" + this.getImageName())));
     }
     
 

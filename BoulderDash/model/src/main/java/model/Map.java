@@ -12,6 +12,8 @@ import model.Element.Mobile.Hero;
 import model.Element.Mobile.Mobile;
 import model.Element.Mobile.MobileFactory;
 import model.Element.Mobile.Rock;
+import model.Element.MotionlessElement.Background;
+import model.Element.MotionlessElement.MotionlessFactory;
 import model.dao.LevelsDAO;
 
 public class Map extends Observable implements IMap{
@@ -19,12 +21,12 @@ public class Map extends Observable implements IMap{
 	/**
 	 * width of the map
 	 */
-	private int width = 15;
+	private int width = 20;
 	
 	/**
 	 * height of the map
 	 */
-	private int height = 15;
+	private int height = 20;
 	
 	/**
 	 * Diamonds left to collect
@@ -63,38 +65,26 @@ public class Map extends Observable implements IMap{
         map = new IElement[this.getWidth()][this.getHeight()];
         MobileFactory.setMap(this);
         char[][] consoleMap;
-    	
+        
         consoleMap = new char[getWidth()][getHeight()];
         
-		for ( int i = 1; i <= getWidth(); i++ ){
-			for ( int j = 1; j <= getHeight(); j++){
+        for ( int x = 1; x <= getHeight(); x++){
+				for ( int y = 1; y <= getWidth(); y++){
+					
 				
-				String t="";
-				t=LevelsDAO.getElement(idLevel, i, j);
-				
-				for (int y = 0; y <=getHeight()-1; y++){
-					for (int x = 0; x <= getWidth()-1; x++){
-						if(t=="V"){
-							consoleMap[x][y]=32;
-						}
-						else{
-							consoleMap[x][y]=t.charAt(0);
-							
-						}
+						String t="";
+						
+						t=LevelsDAO.getElement(idLevel, x, y);
+						consoleMap[x-1][y-1]=t.charAt(0);
+						
 					}
 				}
-			}
-		}
     	
-		
-		for (int y = 0; y <= getHeight()-1; y++){
-			for (int x = 0; x <= getWidth()-1; x++ ){
-				System.out.println(ElementFactory.getFromFileSymbol(consoleMap[x][y]));
+		for (int x = 0; x <= getWidth()-1; x++ ){
+			for (int y = 0; y <= getHeight()-1; y++){
                 this.setElementPosition(ElementFactory.getFromFileSymbol(consoleMap[x][y]), x, y);
-            	
             }
-        }
-        
+        }  
     }
     
 	/**
@@ -221,7 +211,7 @@ public class Map extends Observable implements IMap{
 	 * @return 
 	 */
 	public boolean isEmpty(int x, int y) {
-		if (getElementByPosition(x, y).getClass().equals(null)) {
+		if (getElementByPosition(x, y).getClass().equals(Background.class)) {
 			return true;
 		}
 		return false;
@@ -232,11 +222,7 @@ public class Map extends Observable implements IMap{
 	 * 
 	 * @param element, an enemy
 	 */
-	public void moveEnemy(Mobile element) {
-		int x = 0;
-		int y = 0;
-		x = element.getX();
-		y = element.getY();
+	public void moveEnemy(Mobile element, int x, int y) {
 
 		if (isEmpty(x + 1, y)) {
 			element.setX(x + 1);
@@ -261,10 +247,11 @@ public class Map extends Observable implements IMap{
 	@Override
 	public void startMoveEnemy() {
 		IElement[][] elem = getTheMap();
-		for (int j = 0; j < elem.length; j++) {
-			for (int i = 0; i < elem[i].length; i++) {
-				if (getElementByPosition(i, j).getClass().equals(Enemy.class)) {
-					moveEnemy((Mobile) getElementByPosition(i, j));
+		for (int x = 0; x <= getHeight()-1; x++) {
+			for (int y = 0; y <= getWidth()-1; y++) {
+				if (getElementByPosition(x, y).getClass().equals(Enemy.class)) {
+					System.out.println((Mobile) getElementByPosition(x, y));
+					moveEnemy((Mobile) getElementByPosition(x, y), x, y);
 				}
 			}
 		}
@@ -275,22 +262,22 @@ public class Map extends Observable implements IMap{
 	 */
 	@Override
 	public void applyGravity(){
-		for (int y = 0; y < getHeight(); y++) {
-			for (int x = 0; x < getWidth(); x++) {
+		for (int y = 0; y < getHeight()-1; y++) {
+			for (int x = 0; x < getWidth()-1; x++) {
 				if (map[x][y].getClass().equals(Rock.class) || map[x][y].getClass().equals(Diamond.class)) {
 
 					Mobile element = (Mobile.class.cast((map[x][y])));
 					
 					
-					if (map[element.getX()][element.getY() - 1].getClass().equals(null)) {
+					if (map[element.getX()][element.getY() - 1].getClass().equals(Background.class)) {
 						element.setY(element.getY() - 1);
-						map[x][y] = null;
+						map[x][y] = MotionlessFactory.createBackground();
 						map[x][y - 1] = element;
 						
 					} else if ((map[element.getX()][element.getY() - 1].getClass().equals(Rock.class)
 							|| map[element.getX()][element.getY() - 1].getClass().equals(Diamond.class))
-							&& map[element.getX() + 1][element.getY()].getClass().equals(null)
-							&& map[element.getX() - 1][element.getY()].getClass().equals(null)) {
+							&& map[element.getX() + 1][element.getY()].getClass().equals(Background.class)
+							&& map[element.getX() - 1][element.getY()].getClass().equals(Background.class)) {
 						int rand = (int) (Math.random() * 10);
 						element.setY(element.getY() - 1);
 						if (rand == 0) {
@@ -300,21 +287,22 @@ public class Map extends Observable implements IMap{
 							element.setX(element.getX() - 1);
 							map[x - 1][y - 1] = element;
 						}
-						map[x][y] = null;
+						map[x][y] = MotionlessFactory.createBackground();
 
 					} else if ((map[element.getX()][element.getY() - 1].getClass().equals(Rock.class)
 							|| map[element.getX()][element.getY() - 1].getClass().equals(Diamond.class))
-							&& map[element.getX() - 1][element.getY()].getClass().equals(null)) {
+							&& map[element.getX() - 1][element.getY()].getClass().equals(Background.class)) {
 						element.setY(element.getY() - 1);
 						element.setX(element.getX() - 1);
-						map[x][y] = null;
+						map[x][y] = MotionlessFactory.createBackground();
 						map[x - 1][y - 1] = element;
+						
 					} else if ((map[element.getX()][element.getY() - 1].getClass().equals(Rock.class)
 							|| map[element.getX()][element.getY() - 1].getClass().equals(Diamond.class))
-							&& map[element.getX() + 1][element.getY()].getClass().equals(null)) {
+							&& map[element.getX() + 1][element.getY()].getClass().equals(Background.class)) {
 						element.setY(element.getY() - 1);
 						element.setX(element.getX() + 1);
-						map[x][y] = null;
+						map[x][y] = MotionlessFactory.createBackground();
 						map[x + 1][y - 1] = element;
 					}
 					
