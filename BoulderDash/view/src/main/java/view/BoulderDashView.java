@@ -2,17 +2,16 @@ package view;
 
 
 import java.awt.Dimension;
-import java.awt.Graphics;
+import java.awt.Label;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import controller.BoulderDashController;
 import controller.IOrderPerformer;
 import controller.UserOrder;
 import fr.exia.showboard.BoardFrame;
@@ -24,8 +23,13 @@ import model.Element.Mobile.IMobile;
  *
  */
 
-public class BoulderDashView extends JFrame implements Runnable, KeyListener, IBoulderDashView {
+public class BoulderDashView extends JPanel implements Runnable, KeyListener, IBoulderDashView {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * The order performer
 	 */
@@ -48,14 +52,19 @@ public class BoulderDashView extends JFrame implements Runnable, KeyListener, IB
 	
 	
 	 // the size of the view
-	private static final int mapView = 20;
+	private static final int mapView = 15;
 	
 	/**
-	 * The size of the square
+	 * The size of the squares
 	 */
 	private static final int squareSize = 50;
 	
-	 private Rectangle        closeView;
+	private Rectangle  closeView;
+	
+	/**
+	 * Diamonds left to collect
+	 */
+	Label diamondToCollect = new Label();
 
 	
 	/**
@@ -81,34 +90,37 @@ public class BoulderDashView extends JFrame implements Runnable, KeyListener, IB
         JOptionPane.showMessageDialog(null, message);
     }
     
-    public void displayDiamondToCollect( Graphics g) {
-    	String diamondLeft = BoulderDashController.diamondLeft();
-    	g.drawString(diamondLeft, 16, 16);
-    }
-	
     @Override
     public final void run(){
     	final BoardFrame boardframe = new BoardFrame("Boulder Dash");
+    	diamondToCollect.setText("Diamonds : " + Integer.toString(getMap().getDiamondNumber()));
+    	
     	boardframe.setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
     	boardframe.setDisplayFrame(this.closeView);
         boardframe.setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
-       // boardframe.setHeightLooped(false);
         boardframe.addKeyListener(this);
         boardframe.setFocusable(true);
         boardframe.setFocusTraversalKeysEnabled(false);
+        boardframe.add(diamondToCollect);
+        
 
-        for (int x = 0; x < this.getMap().getWidth(); x++) {
-            for (int y = 0; y < this.getMap().getHeight(); y++) {
+        for (int y = 0; y < this.getMap().getWidth(); y++) {
+            for (int x = 0; x < this.getMap().getHeight(); x++) {
                 boardframe.addSquare(this.map.getElementByPosition(x, y), x, y);
             }
         }
         boardframe.addPawn(this.getHero());
-
+        
         this.getMap().getObservable().addObserver(boardframe.getObserver());
 
         boardframe.setVisible(true);
     }
     
+    @Override
+    public final void refreshDiamondToCollect(){
+    	diamondToCollect.setText("Diamonds : " + Integer.toString(getMap().getDiamondNumber()));
+    }
+   
 
     /**
      * Key control
@@ -178,8 +190,8 @@ public class BoulderDashView extends JFrame implements Runnable, KeyListener, IB
         private void setMap(final IMap map) throws IOException {
             this.map = map;
             
-            for (int x = 0; x < this.getMap().getWidth(); x++) {
-                for (int y = 0; y < this.getMap().getHeight(); y++) {
+            for (int y = 0; y < this.getMap().getWidth(); y++) {
+                for (int x = 0; x < this.getMap().getHeight(); x++) {
                     this.getMap().getElementByPosition(x, y).getSprite().loadImage();
                 }
             }
@@ -203,27 +215,11 @@ public class BoulderDashView extends JFrame implements Runnable, KeyListener, IB
         }
         
         /**
-         * Gets the view.
-         * @return the view
-         */
-        private int getView() {
-            return this.view;
-        }
-
-        /**
          * Sets the view.
          * @param view
          */
         private void setView(final int view) {
             this.view = view;
-        }
-
-        /**
-         * Gets the close view.
-         * @return the close view
-         */
-        private Rectangle getCloseView() {
-            return this.closeView;
         }
 
         /**

@@ -17,23 +17,5 @@ public class Diamond extends Mobile {
 	 */
 	Diamond(IMap map) {
 		super(SPRITE, Permeability.PENETRABLE, map);
-	}
-
-	
-	
-/*	//Fall of the diamond
-	public void fall(){
-		moveDown();
-	}*/
-	
-	
-	/**
-	 * A diamond is collected
-	 * @param nbDiamond
-	 */
-/*	public void collected(int nbDiamond) {
-		nbDiamond = nbDiamond ++;
-		setDiamondCollected(nbDiamond);
-	}*/
-	
+	}	
 }

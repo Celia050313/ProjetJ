@@ -3,8 +3,6 @@ package model.Element;
 import java.awt.Image;
 import java.awt.Point;
 
-import model.Element.Mobile.IMobile;
-
 
 public class Element implements IElement{
 
@@ -19,15 +17,11 @@ public class Element implements IElement{
 	private Sprite  sprite;
 	
 	/**
-	 * The mobile
-	 */
-	private IMobile mobile;
-	
-	/**
 	 * The position
 	 */
 	private Point position;
 
+	
 	/**
 	 * Instantiates a new element
 	 * @param sprite
@@ -36,6 +30,7 @@ public class Element implements IElement{
 	  public Element(final Sprite sprite, final Permeability permeability) {
 	        this.setSprite(sprite);
 	        this.setPermeability(permeability);
+	        this.position = new Point();
 	    }
 	
 	/**
@@ -68,6 +63,7 @@ public class Element implements IElement{
      */
     protected final void setSprite(final Sprite sprite) {
         this.sprite = sprite;
+       
     }
     
     
@@ -79,33 +75,29 @@ public class Element implements IElement{
         return this.getSprite().getImage();
     }
 
-	@Override
-	public IMobile getMobile() {
-		return this.mobile;
-	}
-	
     /**
      * Gets the x
      */
-  /*  @Override
+    @Override
     public int getX() {
-       return this.getPosition().x;
+      return this.getPosition().x;
     }
 
     
     /**
      * Sets the x
      */
-  /*  public void setX(int x) {
+    @Override
+    public void setX(int x) {
     	this.getPosition().x = x;
-        
+    	
     }
 
 
    /**
     * Gets the y
     */
-   /* @Override
+    @Override
     public int getY() {
         return this.getPosition().y;
     }
@@ -114,15 +106,25 @@ public class Element implements IElement{
     /**
      * Sets the Y
      */
-   /* public void setY(int y) {
-        this.getPosition().y = y;
+    public void setY(int y) {
+       this.getPosition().y = y;
     }
 	
-    /**
-     * Gets the position
-     */
-   /* @Override
+   /**
+    * Gets the position
+    */
+    @Override
     public Point getPosition() {
         return this.position;
-    }*/
+    }
+    
+    /**
+     * Sets the position.
+     *
+     * @param position
+     */
+    @Override
+    public void setPosition(Point position) {
+        this.position = position;
+    }
 }

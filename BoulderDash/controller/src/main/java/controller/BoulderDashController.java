@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import fr.exia.showboard.IBoard;
 import model.IBoulderDashModel;
 import view.IBoulderDashView;
 
@@ -9,7 +10,7 @@ import view.IBoulderDashView;
 public class BoulderDashController implements IBoulderDashController, IOrderPerformer{
 	
 	/** The speed of the game. */
-    private static final int     speed = 200;
+    private static final int     speed = 300;
 	
 	/**
 	 * The model
@@ -20,6 +21,11 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
 	 * The view
 	 */
 	private IBoulderDashView view;
+	
+	/** 
+	 * The board
+	 */
+	private IBoard board;
 	
 	/**
 	 * The stack or order
@@ -40,14 +46,19 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
 	
 	/**
 	 * Starts the game
+	 * @throws IOException 
 	 */
 	@Override
 	public void play() throws InterruptedException {
-		System.out.println("Hello gamer");
-		while (this.getModel().getHero().isAlive() || !this.getModel().getHero().hasWon()) {
+		while (this.getModel().getHero().isAlive() && !this.getModel().getHero().hasWon()) {
+			
             Thread.sleep(speed);
-            this.getView().displayMessage("YOU WON !");
+            
+            this.getModel().getMap().applyGravity();
             this.getModel().getMap().startMoveEnemy();
+            this.getView().refreshDiamondToCollect();
+            
+            
             switch (this.getStackOrder()) {
                 case RIGHT:
                     this.getModel().getHero().moveRight();
@@ -66,14 +77,13 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
                     break;
             }
             this.clearStackOrder();
+            
          }
             
-            this.getModel().getMap().applyGravity();
-        
-        if (!this.getModel().getHero().isAlive()){
+        if (this.getModel().getHero().isAlive() == false){
         	 this.getView().displayMessage("GAME OVER");
         }
-        else if(this.getModel().getHero().hasWon()){
+        else if(this.getModel().getHero().hasWon() == true){
         	this.getView().displayMessage("YOU WON !");
         }
        
@@ -150,4 +160,13 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
 	public IOrderPerformer getOrderPerformer() {
 		return this;
 	}
+	
+    /**
+     * Gets the board.
+     *
+     * @return the board
+     */
+    protected IBoard getBoard() {
+        return this.board;
+    }
 }

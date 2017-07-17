@@ -1,17 +1,15 @@
 package model.Element.Mobile;
 
 import java.awt.Point;
+import java.io.IOException;
 
-import fr.exia.showboard.IBoard;
 import model.IMap;
 import model.Element.Element;
 import model.Element.Permeability;
 import model.Element.Sprite;
 import model.Element.MotionlessElement.Background;
 import model.Element.MotionlessElement.Dirt;
-import model.Element.MotionlessElement.Exit;
 import model.Element.MotionlessElement.MotionlessFactory;
-import model.Element.MotionlessElement.Wall;
 
 public class Mobile extends Element implements IMobile{
 	
@@ -34,15 +32,7 @@ public class Mobile extends Element implements IMobile{
 	 * The won status
 	 */
 	private Boolean win =false;
-	
-	/** 
-	 * The board
-	 */
-	private IBoard board;
 
-	private int x;
-
-	private int y;
 	
 	/**
 	 * Instantiates a new mobile
@@ -72,31 +62,35 @@ public class Mobile extends Element implements IMobile{
 
 	/**
 	 * Moves the element up
+	 * @throws IOException 
 	 */
 	@Override
 	public void moveUp() {
 		Element element = (Element.class.cast(this.getMap().getElementByPosition(this.getX(), this.getY()-1)));
+		
 		if (element.getPermeability() == Permeability.PENETRABLE){
 			
     		
     		if(element.getClass().equals(Diamond.class)){
     			this.getMap().setDiamondNumber(this.getMap().getDiamondNumber()-1);
-    			//Exit.reveal(this.getMap().getDiamondNumber());
     			this.getMap().setElementPosition(MotionlessFactory.createBackground(), getX(), getY());
     			this.setY(this.getY() - 1);
     		}
     		
-    		else if(element.getClass().equals(Dirt.class) || element.getClass().equals(Background.class)){
+    		else if(element.getClass().equals(Dirt.class)){
     			this.getMap().setElementPosition(MotionlessFactory.createBackground(), getX(), getY());
     			this.setY(this.getY() - 1);
-    			
+    		}
+    		
+    		else if(element.getClass().equals(Background.class)){
+    			this.setY(this.getY() - 1);
     		}
     	}
     	else if (element.getPermeability() == Permeability.BLOCKING){
     		
     		if(element.getClass().equals(Enemy.class)){
     			this.die();
-    		}
+    		}	
     	}
     	else if(element.getPermeability() == Permeability.EXIT){
     		this.win();
@@ -120,10 +114,13 @@ public class Mobile extends Element implements IMobile{
     			this.setY(this.getY() + 1);
     		}
     		
-    		else if(element.getClass().equals(Dirt.class) || element.getClass().equals(Background.class)){
+    		else if(element.getClass().equals(Dirt.class)){
     			this.getMap().setElementPosition(MotionlessFactory.createBackground(), getX(), getY());
     			this.setY(this.getY() + 1);
-    			
+    		}
+    		
+    		else if(element.getClass().equals(Background.class)){
+    			this.setY(this.getY() + 1);
     		}
     	}
     	else if (element.getPermeability() == Permeability.BLOCKING){
@@ -154,16 +151,27 @@ public class Mobile extends Element implements IMobile{
     			this.setX(this.getX() + 1);
     		}
     		
-    		else if(element.getClass().equals(Dirt.class) || element.getClass().equals(Background.class)){
+    		else if(element.getClass().equals(Dirt.class)){
     			this.getMap().setElementPosition(MotionlessFactory.createBackground(), getX(), getY());
     			this.setX(this.getX() + 1);
-    			
+    		}
+    		
+    		else if(element.getClass().equals(Background.class)){
+    			this.setX(this.getX() + 1);
     		}
     	}
     	else if (element.getPermeability() == Permeability.BLOCKING){
     		
     		if(element.getClass().equals(Enemy.class)){
     			this.die();
+    		}
+    		
+    		else if (element.getClass().equals(Rock.class)){
+    			if (Element.class.cast(this.getMap().getElementByPosition(this.getX()+2, this.getY())).getClass().equals(Background.class)){
+    				element.setX(element.getX()+1);
+    				this.setX(this.getX() + 1);
+    			}
+    			
     		}
     	}
     	else if(element.getPermeability() == Permeability.EXIT){
@@ -185,15 +193,17 @@ public class Mobile extends Element implements IMobile{
     		
     		if(element.getClass().equals(Diamond.class)){
     			this.getMap().setDiamondNumber(this.getMap().getDiamondNumber()-1);
-    			
     			this.getMap().setElementPosition(MotionlessFactory.createBackground(), getX(), getY());
     			this.setX(this.getX() - 1);
     		}
     		
-    		else if(element.getClass().equals(Dirt.class) || element.getClass().equals(Background.class)){
-    			this.getMap().setElementPosition(MotionlessFactory.createBackground(), getX(), getY());
+    		else if(element.getClass().equals(Dirt.class)){
+    			getMap().setElementPosition(MotionlessFactory.createBackground(), getX(), getY());
     			this.setX(this.getX() - 1);
-    			
+    		}
+    		
+    		else if(element.getClass().equals(Background.class)){
+    			this.setX(this.getX() - 1);
     		}
     	}
     	else if (element.getPermeability() == Permeability.BLOCKING){
@@ -201,14 +211,22 @@ public class Mobile extends Element implements IMobile{
     		if(element.getClass().equals(Enemy.class)){
     			this.die();
     			}
+    		
+    		else if (element.getClass().equals(Rock.class)){
+    			if (Element.class.cast(this.getMap().getElementByPosition(this.getX()-2, this.getY())).getClass().equals(Background.class)){
+    				element.setX(element.getX()-1);
+    				this.setX(this.getX() -1);
+    			}
     		}
-		
+    	}
+	
     	else if(element.getPermeability() == Permeability.EXIT){
     		this.win();
     	}
 		
         this.setHasMoved();
 	}
+
 
 	/**
 	 * Do nothing
@@ -223,42 +241,6 @@ public class Mobile extends Element implements IMobile{
      */
     private void setHasMoved() {
         this.getMap().setMapHasChanged();
-    }
-
-    /**
-     * Gets the x
-     */
-    @Override
-    public int getX() {
-       return this.x;
-       //return this.getPosition().x;
-    }
-
-    
-    /**
-     * Sets the x
-     */
-   public final void setX(final int x) {
-        this.x = x;
-        
-    }
-
-
-   /**
-    * Gets the y
-    */
-    @Override
-    public final int getY() {
-        return this.y;
-    }
-
-
-    /**
-     * Sets the Y
-     */
-    public final void setY(final int y) {
-    	//TODO Trouver moyen d'importer showboard
-        this.y = y;
     }
 	
     /**
@@ -309,30 +291,4 @@ public class Mobile extends Element implements IMobile{
     	this.setHasMoved();
     }
     
-    /**
-     * Gets the position
-     */
-    @Override
-    public Point getPosition() {
-        return this.position;
-    }
-
-
-    /**
-     * Sets the position
-     * @param position
-     */
-    public void setPosition(final Point position) {
-        this.position = position;
-    }
-    
-    /**
-     * Gets the board.
-     *
-     * @return the board
-     */
-    protected IBoard getBoard() {
-        return this.board;
-    }
-
 }

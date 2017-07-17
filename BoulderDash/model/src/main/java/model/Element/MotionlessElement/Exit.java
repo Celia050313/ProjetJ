@@ -17,16 +17,6 @@ public class Exit extends MotionlessElement {
 	 */
 	private static final Sprite realSPRITE = new Sprite ('S', "Exit.png");
 
-	/**
-	 * Permeability at the start
-	 */
-	//private static final Permeability START = Permeability.BLOCKING;
-	
-	/**
-	 * Permeability once the exit is revealed
-	 */
-	//private static final Permeability FINISH = Permeability.EXIT;
-
 	
 	/**
 	 * Instantiates a new exit
@@ -42,14 +32,10 @@ public class Exit extends MotionlessElement {
 	 * @param DiamondNumber
 	 * @param DiamondCollected
 	 * @throws IOException 
-	 */
-	//Reveals the exit
-	public void reveal(int DiamondNumber) throws IOException {
-		if (DiamondNumber == 0){
-			realSPRITE.loadImage();
-			this.setSprite(realSPRITE);
-			this.setPermeability(Permeability.EXIT);
-		}
+	 * */
+	public void reveal() throws IOException {
+		realSPRITE.loadImage();
+		this.setSprite(realSPRITE);
+		this.setPermeability(Permeability.EXIT);
 	}
-
 }

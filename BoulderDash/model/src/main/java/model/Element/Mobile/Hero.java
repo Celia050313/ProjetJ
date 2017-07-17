@@ -20,24 +20,26 @@ public class Hero extends Mobile {
 	 */
 	public Hero(final int x, final int y, IMap map) {
 		super(x, y, SPRITE, Permeability.PENETRABLE, map);
-		this.alive=true;
+		this.alive = true;
+		
+	}
+	  
+	
+	/**
+	 * Checks if the hero is alive
+	 */
+	@Override
+	public Boolean isAlive(){
+		return this.alive;
 	}
 	
-		/**
-		 * Check if the hero is alive
-		 */
-	   @Override
-	    public Boolean isAlive() {
-	        return this.alive;
-	    }
-	  
 	   /*
 	    * Change the status of the hero
 	    * @see model.Element.Mobile.Mobile#die()
 	    */
 	    @Override
 	    public final void die() {
-	        super.die();
+	    	super.die();
 	    }
 
 }

@@ -1,6 +1,6 @@
 package model.Element.Mobile;
 
-import java.awt.Point;
+import java.io.IOException;
 
 import fr.exia.showboard.IPawn;
 import model.Element.IElement;
@@ -8,6 +8,7 @@ import model.Element.IElement;
 public interface IMobile extends IElement, IPawn {
     /**
      * Move up
+     * @throws IOException 
      */
 	void moveUp();
 
@@ -48,28 +49,5 @@ public interface IMobile extends IElement, IPawn {
 	 * Changes the status of the element
 	 */
 	void die();
-	
-    /**
-     * Gets the x
-     * @return
-     */
-    @Override
-    int getX();
-
-    /**
-     * Gets the y.
-     * @return 
-     */
-    @Override
-    int getY();
-    
-    /**
-     * Gets the position
-     * @return
-     */
-    @Override
-    Point getPosition();
-	
-	
     
 }

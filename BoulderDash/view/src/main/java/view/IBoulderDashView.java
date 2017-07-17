@@ -7,4 +7,9 @@ public interface IBoulderDashView {
 	 * @param Message the message
 	 */
 	public void displayMessage(String Message);
+	
+	/**
+	 * Refresh the number of diamonds left to collect
+	 */
+	 public void refreshDiamondToCollect();
 }

@@ -23,11 +23,7 @@ public class BoulderDashModel implements IBoulderDashModel{
 	 */
 	private int idLevel;
 	
-	/**
-	 * Diamonds left to collect
-	 */
-	private int DiamondToCollect;
-
+	
 	/**
 	 * Instantiates a new model
 	 * @param idLevel

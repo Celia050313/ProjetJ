@@ -9,6 +9,7 @@ import model.Element.IElement;
 import model.Element.Mobile.Diamond;
 import model.Element.Mobile.Enemy;
 import model.Element.Mobile.Hero;
+import model.Element.Mobile.IMobile;
 import model.Element.Mobile.Mobile;
 import model.Element.Mobile.MobileFactory;
 import model.Element.Mobile.Rock;
@@ -21,17 +22,17 @@ public class Map extends Observable implements IMap{
 	/**
 	 * width of the map
 	 */
-	private int width = 20;
+	private int width = 15;
 	
 	/**
 	 * height of the map
 	 */
-	private int height = 20;
+	private int height = 15;
 	
 	/**
 	 * Diamonds left to collect
 	 */
-	private int DiamondNumber;
+	private int DiamondNumber = 8;
 	
 	/**
 	 * Double array that constitutes the map
@@ -43,7 +44,7 @@ public class Map extends Observable implements IMap{
 	 */
 	private int idLevel;
 	
-	private IElement element;
+	private IMobile mobile;
 
 
 	/**
@@ -68,10 +69,10 @@ public class Map extends Observable implements IMap{
         
         consoleMap = new char[getWidth()][getHeight()];
         
-        for ( int x = 1; x <= getHeight(); x++){
-				for ( int y = 1; y <= getWidth(); y++){
+        
+			for ( int y = 1; y <= getWidth(); y++){
+				for ( int x = 1; x <= getHeight(); x++){
 					
-				
 						String t="";
 						
 						t=LevelsDAO.getElement(idLevel, x, y);
@@ -80,8 +81,8 @@ public class Map extends Observable implements IMap{
 					}
 				}
     	
-		for (int x = 0; x <= getWidth()-1; x++ ){
-			for (int y = 0; y <= getHeight()-1; y++){
+		for (int y = 0; y <= getWidth()-1; y++ ){
+			for (int x = 0; x <= getHeight()-1; x++){
                 this.setElementPosition(ElementFactory.getFromFileSymbol(consoleMap[x][y]), x, y);
             }
         }  
@@ -179,8 +180,8 @@ public class Map extends Observable implements IMap{
 	 */
 	@Override
 	public void setElementPosition(IElement element, int x, int y) { 
-		//element.setX(x);
-		//element.setY(y);
+		element.setX(x);
+		element.setY(y);
 		this.map[x][y] = element;
 	}
 
@@ -222,8 +223,10 @@ public class Map extends Observable implements IMap{
 	 * 
 	 * @param element, an enemy
 	 */
-	public void moveEnemy(Mobile element, int x, int y) {
-
+	public void moveEnemy(Mobile element) {
+		int x = element.getX();
+		int y = element.getY();
+		
 		if (isEmpty(x + 1, y)) {
 			element.setX(x + 1);
 			element.setY(y);
@@ -236,9 +239,9 @@ public class Map extends Observable implements IMap{
 		} else if (isEmpty(x, y - 1) && !isEmpty(x - 1, y) && !isEmpty(x, y - 1) && !isEmpty(x + 1, y)) {
 			element.setX(x);
 			element.setY(y - 1);
-		} else {
-			element.doNothing();
-		}
+		} 
+		
+		setMapHasChanged();
 	}
     
 	/**
@@ -247,11 +250,10 @@ public class Map extends Observable implements IMap{
 	@Override
 	public void startMoveEnemy() {
 		IElement[][] elem = getTheMap();
-		for (int x = 0; x <= getHeight()-1; x++) {
-			for (int y = 0; y <= getWidth()-1; y++) {
+		for (int y = 0; y <= getHeight()-1; y++) {
+			for (int x = 0; x <= getWidth()-1; x++) {
 				if (getElementByPosition(x, y).getClass().equals(Enemy.class)) {
-					System.out.println((Mobile) getElementByPosition(x, y));
-					moveEnemy((Mobile) getElementByPosition(x, y), x, y);
+					moveEnemy((Mobile) getElementByPosition(x, y));
 				}
 			}
 		}
@@ -265,11 +267,12 @@ public class Map extends Observable implements IMap{
 		for (int y = 0; y < getHeight()-1; y++) {
 			for (int x = 0; x < getWidth()-1; x++) {
 				if (map[x][y].getClass().equals(Rock.class) || map[x][y].getClass().equals(Diamond.class)) {
-
+					
 					Mobile element = (Mobile.class.cast((map[x][y])));
 					
 					
 					if (map[element.getX()][element.getY() - 1].getClass().equals(Background.class)) {
+						System.out.println("hi");
 						element.setY(element.getY() - 1);
 						map[x][y] = MotionlessFactory.createBackground();
 						map[x][y - 1] = element;
@@ -307,12 +310,16 @@ public class Map extends Observable implements IMap{
 					}
 					
 					if (map[element.getX()][element.getY() - 1].getClass().equals(Hero.class)){
-						getElement().getMobile().die();
+						getMobile().die();
+						
 					}
 					else if (map[element.getX()][element.getY() - 1].getClass().equals(Enemy.class)){
+						map[x][y] = MotionlessFactory.createBackground();
+						map[x][y - 1] = MobileFactory.createDiamond();
 						
 					}
 				}
+				setMapHasChanged();
 			}
 		}
 	}
@@ -333,10 +340,13 @@ public class Map extends Observable implements IMap{
 	@Override
 	public void setDiamondNumber(int DiamondNumber) {
 		this.DiamondNumber = DiamondNumber;
+		if (getDiamondNumber() ==0){
+			//TODO reveal() exit
+		}
 	}
      
-	public IElement getElement() {
-		return element;
+	public IMobile getMobile() {
+		return mobile;
 	}
 
 }
